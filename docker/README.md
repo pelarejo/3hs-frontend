@@ -5,8 +5,8 @@ Verified on Docker Desktop, Linux arm64, on 2026-09-08: the image built and a
 client source was unchanged. Release mode and on-device behavior are untested.
 
 This builds the existing frontend in a fresh copy using locally supplied HSAPI
-authentication and `.invalid` server URLs. It does not provide a working catalog
-or change the original client source. CIA metadata, including title ID, stays
+authentication and service URLs. It does not change the original client source.
+CIA metadata, including title ID, stays
 upstream; the result is a compilation artifact, not a separately identified clone.
 
 ## Storage and execution
@@ -29,30 +29,76 @@ make -C docker auth
 
 The helper writes `.local-secrets/hsapi-auth.env` with mode `0600`; that directory
 is ignored by Git. It asks before replacing an existing file and never displays
-the password. To use another location for both setup and builds, set
+the token. To use another location for both setup and builds, set
 `AUTH_FILE=/absolute/or/relative/path`. The file format is exactly:
 
 ```text
 HSAPI_USER=your username
-HSAPI_PASSWORD=your password
+HSAPI_TOKEN=your token
 ```
 
 Values may contain spaces, quotes, backslashes, equals signs, and other ordinary
 characters, but must be nonempty single-line byte strings without NUL bytes. Blank, extra, unknown,
 or duplicate entries are rejected. The file is parsed as data and is never sourced
 as shell code. A missing or invalid file stops the build before Docker is invoked.
+The Docker build translates `HSAPI_TOKEN` into the upstream client's
+`hsapi_password` and `hsapi_password_length` C symbols. Those compatibility names,
+and the upstream `X-Auth-Password` HTTP header they populate, remain unchanged.
+Legacy files containing `HSAPI_PASSWORD` are rejected; rerun `make -C docker auth`.
 
-From `3hs-frontend/`, use the locally maintained Make interface:
+From `3hs-frontend/`, the locally maintained Make interface can derive all four
+service URLs from one server base (replace the example address with the backend
+host):
 
 ```sh
-make -C docker build
+make -C docker build SERVER_BASE=http://192.168.1.50:8000
 ```
 
-This defaults to a debug build of both package formats. Override the build
-settings with Make variables when needed:
+On macOS, print the LAN IPv4 address for the default network interface with
+`ipconfig getifaddr "$(route -n get default 2>/dev/null | awk '/interface:/{print $2; exit}')"`,
+then substitute its output for `192.168.1.50` above.
+
+This sets `NB_BASE` to `SERVER_BASE/nbapi`, `CDN_BASE` to `SERVER_BASE`,
+`UPDATE_BASE` to `SERVER_BASE/update`, and `SITE_URL` to `SERVER_BASE/site`.
+An explicit value overrides only its corresponding default, for example:
 
 ```sh
-make -C docker build MODE=release FORMAT=cia BUILD_JOBS=4
+make -C docker build SERVER_BASE=http://192.168.1.50:8000 \
+  SITE_URL=https://example.test
+```
+
+Fully explicit configuration remains supported:
+
+```sh
+make -C docker build \
+  NB_BASE=http://192.168.1.50:8000/nbapi \
+  CDN_BASE=http://192.168.1.50:8000 \
+  UPDATE_BASE=http://192.168.1.50:8000/update \
+  SITE_URL=http://192.168.1.50:8000/site
+```
+
+`NB_BASE` and `CDN_BASE` map to the current backend: the catalog API is under
+`http://<LAN-IP>:8000/nbapi`, while content downloads are rooted at
+`http://<LAN-IP>:8000`. The backend does not currently provide update or website
+surfaces, but `UPDATE_BASE` and `SITE_URL` are still mandatory; calls to those
+example paths will fail until the corresponding backend features are implemented.
+
+`SERVER_BASE`, when used, and all four resolved values must be absolute `http://`
+or `https://` URLs with a nonempty authority and no trailing slash, query,
+fragment, embedded credentials, comma,
+whitespace, or control characters. Invalid or missing values stop the build before
+Docker is invoked and are revalidated inside the build container.
+
+`SERVER_BASE` fallback is a Make-interface convenience. Calling
+`bash docker/build.sh` directly still requires `NB_BASE`, `CDN_BASE`,
+`UPDATE_BASE`, and `SITE_URL` to be set explicitly.
+
+The build defaults to debug mode and both package formats. Override the build
+settings alongside the required URLs when needed:
+
+```sh
+make -C docker build MODE=release FORMAT=cia BUILD_JOBS=4 \
+  SERVER_BASE=http://192.168.1.50:8000
 ```
 
 Other targets are:
@@ -90,7 +136,7 @@ success, failure, or interruption.
 The credentials remain extractable from resulting CIA/ELF/3DSX files and retained
 build outputs. In addition, the client sends its authentication headers in
 plaintext over HTTP on the LAN because these builds still use HTTP endpoints.
-Use a dedicated, unprivileged HSAPI account, protect the credential file, do not
+Use a dedicated, unprivileged HSAPI token, protect the credential file, do not
 share artifacts with embedded credentials, and only use a trusted local network.
 
 ## Verified environment and remaining limits

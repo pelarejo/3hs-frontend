@@ -18,15 +18,12 @@ if [[ -e "$auth_file" ]]; then
 fi
 
 IFS= read -r -p 'HSAPI username: ' username
-IFS= read -r -s -p 'HSAPI password: ' password
-printf '\n'
-IFS= read -r -s -p 'Confirm HSAPI password: ' password_confirm
+IFS= read -r -s -p 'HSAPI token: ' token
 printf '\n'
 
 [[ -n "$username" ]] || { echo 'Username must not be empty.' >&2; exit 2; }
-[[ -n "$password" ]] || { echo 'Password must not be empty.' >&2; exit 2; }
-[[ "$password" == "$password_confirm" ]] || { echo 'Passwords do not match.' >&2; exit 2; }
-case "$username$password" in *$'\n'*|*$'\r'*) echo 'Credentials must not contain newline characters.' >&2; exit 2 ;; esac
+[[ -n "$token" ]] || { echo 'Token must not be empty.' >&2; exit 2; }
+case "$username$token" in *$'\n'*|*$'\r'*) echo 'Credentials must not contain newline characters.' >&2; exit 2 ;; esac
 
 parent_dir=$(dirname -- "$auth_file")
 umask 077
@@ -34,7 +31,7 @@ mkdir -p -- "$parent_dir"
 tmp_file=$(mktemp "$parent_dir/.hsapi-auth.XXXXXXXX")
 cleanup() { rm -f -- "$tmp_file"; }
 trap cleanup EXIT HUP INT TERM
-printf 'HSAPI_USER=%s\nHSAPI_PASSWORD=%s\n' "$username" "$password" > "$tmp_file"
+printf 'HSAPI_USER=%s\nHSAPI_TOKEN=%s\n' "$username" "$token" > "$tmp_file"
 chmod 600 "$tmp_file"
 mv -f -- "$tmp_file" "$auth_file"
 trap - EXIT HUP INT TERM

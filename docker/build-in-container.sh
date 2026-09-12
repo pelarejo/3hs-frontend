@@ -17,6 +17,9 @@ case "$format" in
 esac
 jobs=${BUILD_JOBS:-2}
 [[ "$jobs" =~ ^[1-9][0-9]*$ ]] || { echo 'BUILD_JOBS must be a positive integer' >&2; exit 2; }
+for url_name in NB_BASE CDN_BASE UPDATE_BASE SITE_URL; do
+    /usr/local/bin/validate-base-url "$url_name"
+done
 [[ -f /source/build.pl && -d /output ]] || {
     echo 'Bind the frontend read-only at /source and its .build-docker directory at /output.' >&2
     exit 2
@@ -38,7 +41,7 @@ mkdir -p "$run_dir/source" "$run_dir/artifacts" "$run_dir/tmp"
 export TMPDIR="$run_dir/tmp"
 exec > >(tee "$run_dir/build.log") 2>&1
 echo "Build directory: $run_dir"
-echo 'Building with supplied HSAPI credentials and nonfunctional .invalid endpoints.'
+echo 'Building with supplied HSAPI credentials and configured service URLs.'
 
 # Never copy Git internals or prior container state into the build tree.
 rsync -a --safe-links \
@@ -62,25 +65,26 @@ AUTH_FILE=/run/secrets/hsapi-auth.env perl -e '
     while (defined(my $line = <$in>)) {
         $line =~ s/\n\z//;
         die "Invalid HSAPI credential file.\n" if $line =~ /[\r\0]/;
-        my ($key, $val) = $line =~ /\A(HSAPI_USER|HSAPI_PASSWORD)=(.*)\z/s
+        my ($key, $val) = $line =~ /\A(HSAPI_USER|HSAPI_TOKEN)=(.*)\z/s
             or die "Invalid HSAPI credential file.\n";
         die "Invalid HSAPI credential file.\n" if exists $value{$key} || !length($val);
         $value{$key} = $val;
     }
     die "Invalid HSAPI credential file.\n"
-        unless keys(%value) == 2 && exists($value{HSAPI_USER}) && exists($value{HSAPI_PASSWORD});
-    die "HSAPI password is too long.\n" if length($value{HSAPI_PASSWORD}) > 2147483647;
+        unless keys(%value) == 2 && exists($value{HSAPI_USER}) && exists($value{HSAPI_TOKEN});
+    die "HSAPI token is too long.\n" if length($value{HSAPI_TOKEN}) > 2147483647;
     sub c_string { return join "", map { sprintf "\\%03o", $_ } unpack "C*", $_[0]; }
     open my $out, ">:raw", "source/hsapi_auth.c" or die "Unable to create generated auth source.\n";
     print {$out} "#include <string.h>\n";
     print {$out} "const char *hsapi_user = \"", c_string($value{HSAPI_USER}), "\";\n";
-    print {$out} "const int hsapi_password_length = ", length($value{HSAPI_PASSWORD}), ";\n";
-    print {$out} "void hsapi_password(char *ret) {\n    memcpy(ret, \"", c_string($value{HSAPI_PASSWORD}), "\", hsapi_password_length);\n}\n";
+    # These symbol names are the upstream client ABI; the Docker-facing credential is a token.
+    print {$out} "const int hsapi_password_length = ", length($value{HSAPI_TOKEN}), ";\n";
+    print {$out} "void hsapi_password(char *ret) {\n    memcpy(ret, \"", c_string($value{HSAPI_TOKEN}), "\", hsapi_password_length);\n}\n";
 '
 unset AUTH_FILE
 
 export VERSION=0
-config="$mode,http_backend=httpc,targets=$targets,update_base=http://updates.invalid/3hs,nb_base=http://catalog.invalid/nbapi,cdn_base=http://content.invalid,site_url=http://site.invalid"
+config="$mode,http_backend=httpc,targets=$targets,update_base=$UPDATE_BASE,nb_base=$NB_BASE,cdn_base=$CDN_BASE,site_url=$SITE_URL"
 
 # build.pl swallows Make's exit status. Initialize only, then call Make directly.
 perl ./build.pl --init --target "$mode" --configure "$config"
@@ -95,7 +99,7 @@ for artifact in "${artifacts[@]}"; do
 done
 {
     echo "Mode: $mode; targets: $targets; CIA version: 0"
-    echo 'Endpoints: nonfunctional .invalid placeholders; authentication: supplied at build time'
+    echo 'Endpoints: supplied at build time; authentication: supplied at build time'
     arm-none-eabi-g++ --version
     dpkg-query -W libavformat-dev libavcodec-dev libavutil-dev libswresample-dev
     dkp-pacman -Q

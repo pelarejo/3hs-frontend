@@ -1,3 +1,4 @@
 *
 !Dockerfile
 !build-in-container.sh
+!validate-base-url.sh
