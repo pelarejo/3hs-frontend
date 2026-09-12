@@ -4,7 +4,7 @@ Verified on Docker Desktop, Linux arm64, on 2026-09-08: the image built and a
 `debug both` build produced `3hs.elf`, `3hs.3dsx`, and `3hs.cia`. The original
 client source was unchanged. Release mode and on-device behavior are untested.
 
-This builds the existing frontend in a fresh copy using the authorized dummy
+This builds the existing frontend in a fresh copy using locally supplied HSAPI
 authentication and `.invalid` server URLs. It does not provide a working catalog
 or change the original client source. CIA metadata, including title ID, stays
 upstream; the result is a compilation artifact, not a separately identified clone.
@@ -20,6 +20,27 @@ Start Docker Desktop, then use its normal Docker connection. The wrapper honors
 standard Docker environment/context configuration.
 
 ## Build
+
+First create the required local credential file with the interactive helper:
+
+```sh
+make -C docker auth
+```
+
+The helper writes `.local-secrets/hsapi-auth.env` with mode `0600`; that directory
+is ignored by Git. It asks before replacing an existing file and never displays
+the password. To use another location for both setup and builds, set
+`AUTH_FILE=/absolute/or/relative/path`. The file format is exactly:
+
+```text
+HSAPI_USER=your username
+HSAPI_PASSWORD=your password
+```
+
+Values may contain spaces, quotes, backslashes, equals signs, and other ordinary
+characters, but must be nonempty single-line byte strings without NUL bytes. Blank, extra, unknown,
+or duplicate entries are rejected. The file is parsed as data and is never sourced
+as shell code. A missing or invalid file stops the build before Docker is invoked.
 
 From `3hs-frontend/`, use the locally maintained Make interface:
 
@@ -61,7 +82,16 @@ the image build.
 Each attempt retains a new `.build-docker/runs/build.XXXXXXXX/` containing
 `source/`, `build.log`, and `artifacts/`. Failed runs retain their logs and source
 copy. Successful runs export ELF and requested packages plus dependency versions.
-Dummy `hsapi_auth.c` is generated only in this copy. No real credentials are read.
+The credential file is mounted read-only into the transient build container; it is
+not copied into the Docker build context or an image layer. Generated C safely
+escapes every credential byte and is scrubbed from the retained run source on
+success, failure, or interruption.
+
+The credentials remain extractable from resulting CIA/ELF/3DSX files and retained
+build outputs. In addition, the client sends its authentication headers in
+plaintext over HTTP on the LAN because these builds still use HTTP endpoints.
+Use a dedicated, unprivileged HSAPI account, protect the credential file, do not
+share artifacts with embedded credentials, and only use a trusted local network.
 
 ## Verified environment and remaining limits
 

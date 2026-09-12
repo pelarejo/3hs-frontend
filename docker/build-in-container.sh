@@ -21,6 +21,10 @@ jobs=${BUILD_JOBS:-2}
     echo 'Bind the frontend read-only at /source and its .build-docker directory at /output.' >&2
     exit 2
 }
+[[ -f /run/secrets/hsapi-auth.env ]] || {
+    echo 'Missing read-only HSAPI credential mount at /run/secrets/hsapi-auth.env.' >&2
+    exit 2
+}
 for tool in perl make gcc rsync arm-none-eabi-g++ tex3ds bin2s bannertool; do
     command -v "$tool" >/dev/null || { echo "Missing build tool: $tool" >&2; exit 1; }
 done
@@ -34,7 +38,7 @@ mkdir -p "$run_dir/source" "$run_dir/artifacts" "$run_dir/tmp"
 export TMPDIR="$run_dir/tmp"
 exec > >(tee "$run_dir/build.log") 2>&1
 echo "Build directory: $run_dir"
-echo 'Compile-only build using dummy credentials and nonfunctional .invalid endpoints.'
+echo 'Building with supplied HSAPI credentials and nonfunctional .invalid endpoints.'
 
 # Never copy Git internals or prior container state into the build tree.
 rsync -a --safe-links \
@@ -44,14 +48,36 @@ rsync -a --safe-links \
     --exclude='/source/hsapi_auth.c' \
     /source/ "$run_dir/source/"
 cd "$run_dir/source"
-cat > source/hsapi_auth.c <<'AUTH'
-#include <string.h>
-const char *hsapi_user = "local-build-placeholder";
-const int hsapi_password_length = sizeof("not-a-real-password") - 1;
-void hsapi_password(char *ret) {
-    memcpy(ret, "not-a-real-password", hsapi_password_length);
-}
-AUTH
+auth_source="$run_dir/source/source/hsapi_auth.c"
+cleanup_auth_source() { rm -f -- "$auth_source"; }
+trap cleanup_auth_source EXIT
+trap 'exit 129' HUP
+trap 'exit 130' INT
+trap 'exit 143' TERM
+AUTH_FILE=/run/secrets/hsapi-auth.env perl -e '
+    use strict; use warnings;
+    my $path = $ENV{AUTH_FILE};
+    open my $in, "<:raw", $path or die "Unable to read HSAPI credential file.\n";
+    my %value;
+    while (defined(my $line = <$in>)) {
+        $line =~ s/\n\z//;
+        die "Invalid HSAPI credential file.\n" if $line =~ /[\r\0]/;
+        my ($key, $val) = $line =~ /\A(HSAPI_USER|HSAPI_PASSWORD)=(.*)\z/s
+            or die "Invalid HSAPI credential file.\n";
+        die "Invalid HSAPI credential file.\n" if exists $value{$key} || !length($val);
+        $value{$key} = $val;
+    }
+    die "Invalid HSAPI credential file.\n"
+        unless keys(%value) == 2 && exists($value{HSAPI_USER}) && exists($value{HSAPI_PASSWORD});
+    die "HSAPI password is too long.\n" if length($value{HSAPI_PASSWORD}) > 2147483647;
+    sub c_string { return join "", map { sprintf "\\%03o", $_ } unpack "C*", $_[0]; }
+    open my $out, ">:raw", "source/hsapi_auth.c" or die "Unable to create generated auth source.\n";
+    print {$out} "#include <string.h>\n";
+    print {$out} "const char *hsapi_user = \"", c_string($value{HSAPI_USER}), "\";\n";
+    print {$out} "const int hsapi_password_length = ", length($value{HSAPI_PASSWORD}), ";\n";
+    print {$out} "void hsapi_password(char *ret) {\n    memcpy(ret, \"", c_string($value{HSAPI_PASSWORD}), "\", hsapi_password_length);\n}\n";
+'
+unset AUTH_FILE
 
 export VERSION=0
 config="$mode,http_backend=httpc,targets=$targets,update_base=http://updates.invalid/3hs,nb_base=http://catalog.invalid/nbapi,cdn_base=http://content.invalid,site_url=http://site.invalid"
@@ -69,7 +95,7 @@ for artifact in "${artifacts[@]}"; do
 done
 {
     echo "Mode: $mode; targets: $targets; CIA version: 0"
-    echo 'Endpoints/authentication: nonfunctional build-only placeholders'
+    echo 'Endpoints: nonfunctional .invalid placeholders; authentication: supplied at build time'
     arm-none-eabi-g++ --version
     dpkg-query -W libavformat-dev libavcodec-dev libavutil-dev libswresample-dev
     dkp-pacman -Q
