@@ -36,8 +36,8 @@
 #include "proxy.hh"
 #include "log.hh"
 
-#define SETTINGS_LOCATION "/3ds/3hs/settings"
-#define THEMES_DIR        "/3ds/3hs/themes/"
+#define SETTINGS_LOCATION "/3ds/3ls/settings"
+#define THEMES_DIR        "/3ds/3ls/themes/"
 #define SPECIAL_LIGHT     "special:light"
 #define SPECIAL_DARK      "special:dark"
 #define SPECIAL_PREFIX    "special:"
@@ -70,7 +70,7 @@ NewSettings *get_nsettings()
 static void write_settings_to_file()
 {
 	mkdir("/3ds", 0777);
-	mkdir("/3ds/3hs", 0777); /* ensure these dirs exist */
+	mkdir("/3ds/3ls", 0777); /* ensure these dirs exist */
 	FILE *f = fopen(SETTINGS_LOCATION, "w");
 	panic_assert(f, "failed to open settings file for writing");
 
@@ -1180,4 +1180,3 @@ void show_theme_menu()
 	ui::set_focus(focus);
 	write_settings();
 }
-

@@ -1,7 +1,7 @@
 MAKEFILE_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 FRONTEND_DIR := $(abspath $(MAKEFILE_DIR)/..)
 BUILD_DIR := $(FRONTEND_DIR)/.build-docker
-IMAGE := 3hs-builder:local
+IMAGE := 3ls-builder:local
 AUTH_FILE ?= $(FRONTEND_DIR)/.local-secrets/hsapi-auth.env
 
 MODE ?= debug
@@ -30,7 +30,7 @@ export SERVER_BASE SERVER_BASE_USED NB_BASE CDN_BASE UPDATE_BASE SITE_URL
 .PHONY: help auth build clean image-clean distclean
 
 help:
-	@echo '3hs frontend Docker build'
+	@echo '3LS frontend Docker build'
 	@echo
 	@echo 'Usage: make -C docker build SERVER_BASE=http://host:8000 [NB_BASE=url] [CDN_BASE=url] [UPDATE_BASE=url] [SITE_URL=url] [MODE=debug|release] [FORMAT=both|3dsx|cia|elf] [BUILD_JOBS=N] [AUTH_FILE=path]'
 	@echo

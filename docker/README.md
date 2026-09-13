@@ -1,13 +1,14 @@
 # Docker build
 
 Verified on Docker Desktop, Linux arm64, on 2026-09-08: the image built and a
-`debug both` build produced `3hs.elf`, `3hs.3dsx`, and `3hs.cia`. The original
-client source was unchanged. Release mode and on-device behavior are untested.
+`debug both` build produced `3ls.elf`, `3ls.3dsx`, and `3ls.cia`. Release mode
+and on-device behavior are untested.
 
-This builds the existing frontend in a fresh copy using locally supplied HSAPI
-authentication and service URLs. It does not change the original client source.
-CIA metadata, including title ID, stays
-upstream; the result is a compilation artifact, not a separately identified clone.
+This builds the modified frontend in a fresh copy using locally supplied HSAPI
+authentication and service URLs. The upstream copyright and GPLv3 notices remain
+in the source.
+CIA metadata identifies the modified client as 3LS with application title ID
+`0004000003DF2000`, separate from upstream 3HS.
 
 ## Storage and execution
 
@@ -111,7 +112,7 @@ make -C docker distclean
 ```
 
 `clean` removes only `3hs-frontend/.build-docker/`. `image-clean` removes only the
-local `3hs-builder:local` image and succeeds when that image is already absent.
+local `3ls-builder:local` image and succeeds when that image is already absent.
 `distclean` performs both operations. None of these commands performs a global
 Docker prune.
 

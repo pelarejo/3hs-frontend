@@ -1,11 +1,11 @@
 BasicInfo:
-  Title                   : 3hs_app
-  ProductCode             : CTR-N-3HSA
+  Title                   : 3ls_app
+  ProductCode             : CTR-N-3LSA
   Logo                    : Nintendo
 
 TitleInfo:
   Category                : Application
-  UniqueId                : 0x3DF10
+  UniqueId                : 0x3DF20
 
 Option:
   UseOnSD                 : true # true if App is to be installed to SD

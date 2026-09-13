@@ -29,8 +29,8 @@ RUN git clone --depth 1 --branch "${MAKEROM_REF}" --recurse-submodules \
     && install -m 755 /opt/build-src/Project_CTR/makerom/bin/makerom /usr/local/bin/makerom
 
 ENV PATH="/opt/devkitpro/devkitARM/bin:/opt/devkitpro/tools/bin:/opt/devkitpro/portlibs/3ds/bin:${PATH}"
-COPY build-in-container.sh /usr/local/bin/build-3hs
+COPY build-in-container.sh /usr/local/bin/build-3ls
 COPY validate-base-url.sh /usr/local/bin/validate-base-url
-RUN chmod 755 /usr/local/bin/build-3hs /usr/local/bin/validate-base-url
+RUN chmod 755 /usr/local/bin/build-3ls /usr/local/bin/validate-base-url
 WORKDIR /output
-ENTRYPOINT ["/usr/local/bin/build-3hs"]
+ENTRYPOINT ["/usr/local/bin/build-3ls"]

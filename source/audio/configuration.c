@@ -23,8 +23,8 @@
 #include <ctype.h>
 #include "log.hh"
 
-#define ACONFIG_MUSIC_DIR "/3ds/3hs/music/"
-#define ACONFIG_FILE "/3ds/3hs/audio.cfg"
+#define ACONFIG_MUSIC_DIR "/3ds/3ls/music/"
+#define ACONFIG_FILE "/3ds/3ls/audio.cfg"
 
 
 static const char default_acfg[] =
@@ -52,7 +52,7 @@ static const char default_acfg[] =
 	"## Note that playlist names may not contain spaces, if you wish for 3hs to display them anyway\n"
 	"## replace the space with either a \"-\" or a \"_\" and 3hs will replace it with a space when displaying.\n"
 	"# playlist_name [\n"
-	"#   song_name_a.hwav        # path relative to /3ds/3hs/music\n"
+	"#   song_name_a.hwav        # path relative to /3ds/3ls/music\n"
 	"#   /music/song_name_b.hwav # path relative to the root of the SD card\n"
 	"# ]\n"
 	"\n";
@@ -467,4 +467,3 @@ void acfg_free(void)
 	free(gacfg.playlists);
 	plist_exit();
 }
-

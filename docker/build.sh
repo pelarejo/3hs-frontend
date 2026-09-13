@@ -39,7 +39,7 @@ AUTH_FILE="$auth_file" perl -e '
 ' || auth_error
 command -v docker >/dev/null || { echo 'Docker Desktop is required.' >&2; exit 1; }
 docker info >/dev/null
-docker build --tag 3hs-builder:local "$frontend_dir/docker"
+docker build --tag 3ls-builder:local "$frontend_dir/docker"
 mkdir -p "$frontend_dir/.build-docker"
 exec docker run --rm --network none \
     --mount "type=bind,src=$frontend_dir,dst=/source,readonly" \
@@ -50,4 +50,4 @@ exec docker run --rm --network none \
     --env "CDN_BASE=$CDN_BASE" \
     --env "UPDATE_BASE=$UPDATE_BASE" \
     --env "SITE_URL=$SITE_URL" \
-    3hs-builder:local "$mode" "$format"
+    3ls-builder:local "$mode" "$format"

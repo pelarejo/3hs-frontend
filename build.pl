@@ -40,7 +40,7 @@ my $romfs_dir = "romfs";
 my $graphics_output = "$romfs_dir/gfx";
 
 # Name of the project, name of the binary
-my $binary_name = "3hs";
+my $binary_name = "3ls";
 
 # These are in addition to "-lcitro2d -lcitro3d -lctru -lm"
 my $libraries = "-lmbedcrypto";
@@ -58,9 +58,9 @@ my $compiler_prefix = "arm-none-eabi-";
 # RSF file for compiling a CIA
 my $cia_rsf = "cia_stuff/3hs.rsf";
 
-my $app_title = "3hs";
-my $app_description = "An on-device client for hShop";
-my $app_author = "hShop";
+my $app_title = "3LS";
+my $app_description = "3DS Local Shop client";
+my $app_author = "3LS";
 my $app_icon = "cia_stuff/icon.png";
 my $app_banner = "cia_stuff/banner.bnr";
 
@@ -557,4 +557,3 @@ EOF
 	make_target $target unless -f "$build_dir/$target.target.mk";
 	execute_make;
 }
-

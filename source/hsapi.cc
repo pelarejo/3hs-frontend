@@ -382,11 +382,11 @@ std::string hsapi::update_location(const std::string& ver)
 #ifdef DEVICE_ID
 #define STRING_(id) #id
 #define STRINGIFY(id) STRING_(id)
-	return HS_UPDATE_BASE "/3hs-" + ver + "-" STRINGIFY(DEVICE_ID) ".cia";
+	return HS_UPDATE_BASE "/3ls-" + ver + "-" STRINGIFY(DEVICE_ID) ".cia";
 #undef STRING_
 #undef STRINGIFY
 #else
-	return HS_UPDATE_BASE "/3hs-" + ver + ".cia";
+	return HS_UPDATE_BASE "/3ls-" + ver + ".cia";
 #endif
 }
 
@@ -435,4 +435,3 @@ std::string hsapi::title_name(const hsapi::PartialTitle& title) { return real_ti
 std::string hsapi::title_name(const hsapi::Title& title)        { return real_title_name(title); }
 
 /* 1}}} */
-

@@ -4,7 +4,7 @@ set -euo pipefail
 # /source must be a read-only bind of 3hs-frontend; /output must be a writable
 # bind of 3hs-frontend/.build-docker. Docker Desktop manages toolchain/image storage.
 if [[ $# -gt 2 ]]; then
-    echo 'Usage: build-3hs [debug|release] [3dsx|cia|both|elf]' >&2
+    echo 'Usage: build-3ls [debug|release] [3dsx|cia|both|elf]' >&2
     exit 2
 fi
 mode=${1:-debug}
@@ -46,8 +46,8 @@ echo 'Building with supplied HSAPI credentials and configured service URLs.'
 # Never copy Git internals or prior container state into the build tree.
 rsync -a --safe-links \
     --exclude='.git' --exclude='/.build-docker/' --exclude='/docker/' \
-    --exclude='/.build-stage/' --exclude='/3hs.elf' --exclude='/3hs.3dsx' \
-    --exclude='/3hs.cia' --exclude='/3hstool/3hstool' --exclude='/3hstool/*.o' \
+    --exclude='/.build-stage/' --exclude='/3ls.elf' --exclude='/3ls.3dsx' \
+    --exclude='/3ls.cia' --exclude='/3hstool/3hstool' --exclude='/3hstool/*.o' \
     --exclude='/source/hsapi_auth.c' \
     /source/ "$run_dir/source/"
 cd "$run_dir/source"
@@ -90,9 +90,9 @@ config="$mode,http_backend=httpc,targets=$targets,update_base=$UPDATE_BASE,nb_ba
 perl ./build.pl --init --target "$mode" --configure "$config"
 make -f ".build-stage/$mode.target.mk" -j"$jobs"
 
-artifacts=(3hs.elf)
-case "$format" in both|3dsx) artifacts+=(3hs.3dsx) ;; esac
-case "$format" in both|cia) artifacts+=(3hs.cia) ;; esac
+artifacts=(3ls.elf)
+case "$format" in both|3dsx) artifacts+=(3ls.3dsx) ;; esac
+case "$format" in both|cia) artifacts+=(3ls.cia) ;; esac
 for artifact in "${artifacts[@]}"; do
     [[ -s "$artifact" ]] || { echo "Missing or empty artifact: $artifact" >&2; exit 1; }
     cp "$artifact" "$run_dir/artifacts/"

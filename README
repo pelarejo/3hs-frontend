@@ -1,7 +1,9 @@
-        = = 3hs = =
+        = = 3LS = =
 
-Blobfrii 3ds client for erista's hShop.
-3hs is licensed under GPLv3 (see: LICENSE).
+3LS (3DS Local Shop) is a modified version of Blobfrii's 3DS client for
+erista's hShop. It was modified and rebranded for local-network use in 2026.
+3LS remains licensed under GPLv3 (see: LICENSE); upstream copyright and license
+notices are preserved.
 Also included is a copy of the "file_forwarder" project, which is the source
 for the applications labelled as "installer" on the hShop website. It is also subject to the GPLv3.
 
@@ -87,4 +89,3 @@ Here is an explication of important directories and their contents:
 
 If you need any help understanding the 3hs codebase feel free to e-mail your questions or to send a message
 in the official hShop discord server.
-
