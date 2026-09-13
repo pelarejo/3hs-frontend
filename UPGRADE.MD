@@ -7,14 +7,13 @@ application identity or its SD-card paths.
 ## Baseline and repository state
 
 The original source baseline is commit
-`983fbc947a23ef85dd381f4a1c7d7a999865ea03` (`3hs version 1.5.11`). At the time
-this document was added, that commit was reachable as local branch `main` and
-remote-tracking ref `origin/main`. The checked-out `dev` branch also contained
-local integration changes on top of it.
-
-The 3LS identity changes described below were initially an uncommitted working
-tree delta from `cd1a330`. Use the following command to review the complete local
-delta, including the committed Docker integration:
+`983fbc947a23ef85dd381f4a1c7d7a999865ea03` (`3hs version 1.5.11`). It is the
+tip of the clean upstream-snapshot branch `3hs`, which tracks `origin/3hs`.
+The 3LS integration and product branch is `main`, which tracks `origin/main`.
+Its current tip is `bd1dfd59bf445892322bd93300a0681a7919d346`
+(`rebranding to 3LS`). Use the following command to review the complete local
+delta from the original baseline, including the Docker integration and 3LS
+identity changes:
 
 ```sh
 git diff 983fbc947a23ef85dd381f4a1c7d7a999865ea03
@@ -133,14 +132,14 @@ the upstream art credit in `README`.
 
 1. Ensure the working tree is understood and back up any uncommitted work. Never
    delete the nested `.git/`, `docker/`, `.build-docker/`, or `.local-secrets/`.
-2. Record the old and proposed upstream commits. Confirm the proposed source and
-   ref actually come from the intended upstream; this repository currently has
-   no separately configured upstream remote.
-3. Import or merge only upstream-owned files. Keep the upstream import and local
+2. Record the current `3hs` commit and the proposed original-source archive's
+   provenance and checksum. Also record an upstream commit identifier when one
+   is supplied with the archive.
+3. Import only original-owned files. Keep the upstream snapshot import and local
    Docker-overlay changes separable in history.
-4. Review upstream changes to `build.pl`, the RSF/exheader, settings, logging,
-   proxy, audio, update, HTTP, translations, and supplement-font scripts before
-   reapplying this document's invariants.
+4. Review upstream-source changes to `build.pl`, the RSF/exheader, settings,
+   logging, proxy, audio, update, HTTP, translations, and supplement-font scripts
+   before reapplying this document's invariants.
 5. Confirm the RSF still has `Application`, UniqueId `0x3DF20`, ProductCode
    `CTR-N-3LSA`, and internal title `3ls_app`. Confirm the resulting title ID is
    `0004000003DF2000`.
@@ -187,26 +186,57 @@ the upstream art credit in `README`.
     3LS CIA should update 3LS; a CIA with the official 3HS title ID must not be
     published at the 3LS update URL.
 
-## Recommended Git organization
+## Recommended branch model
 
-Use the existing repository as a real fork-style patch stack rather than
-replacing the tree opaquely:
+Use `origin` as the user's writable fork with two durable branches:
 
-- Keep `origin` for the user's writable fork.
-- After verifying the authoritative original repository URL, add it as a
-  read-only `upstream` remote and fetch explicit refs. Do not invent that URL
-  from the current `origin` configuration.
-- Maintain a clean branch or tag at each imported upstream release, and keep the
-  3LS product changes on a long-lived branch rebased or merged from that clean
-  baseline according to the project's chosen history policy.
-- Keep upstream imports, 3LS identity/runtime patches, and the local `docker/`
-  overlay in separate commits. This makes conflicts reviewable and allows the
-  Docker layer to be reapplied without mixing it into an upstream snapshot.
-- If upstream is only available as archives, create one clearly labeled vendor
-  import commit per archive, recording its checksum/source, while explicitly
-  preserving the local-only paths listed above. Then replay or merge the small
-  3LS and Docker commit series and run the checklist.
+- `3hs` is the clean original-source snapshot branch. It must not contain 3LS
+  branding, runtime isolation, credentials, or the local Docker overlay.
+- `main` is the working 3LS branch. It contains the local Docker/auth integration
+  and the 3LS identity/runtime patch stack on top of the snapshot history.
 
-This approach is analogous to syncing a hosted fork: the clean upstream history
-or vendor-import branch provides the comparison base, while the 3LS branch
-contains a small, auditable local patch stack.
+Keep each upstream import, the local-only `docker/` overlay, and 3LS product
+changes in separate commits. This makes later conflicts attributable and keeps
+the overlay reusable. Never commit `.build-docker/`, `.local-secrets/` or the generated
+`source/hsapi_auth.c`.
+
+Treat both durable branches as append-only published history. The one-time branch
+migration that established `3hs` and `main` does not authorize future rewrites.
+Advance `3hs` only by fast-forwarding it to a verified temporary import branch
+based on its current tip, then merge `3hs` into `main`. Do not rebase published
+`main`, replace either durable branch non-fast-forward, or force-push them.
+Lightweight or annotated backup tags are useful before an import, but creating a
+backup tag is not permission to rewrite branch history.
+
+The configured `origin` is the user's writable fork. Original-source upgrades
+are imported from verified snapshots or archives, typically ZIP files; no
+additional Git remote is part of this workflow.
+
+## Import through a temporary branch
+
+Perform every source refresh on a temporary branch so neither durable branch is
+partially updated:
+
+1. Start with a clean, backed-up worktree. Fetch `origin`, record the current
+   `3hs` and `main` commit IDs, and create a temporary branch such as
+   `import-3hs-<version>` from `3hs`.
+2. Record the original-source archive's provenance and checksum, plus any
+   upstream commit identifier supplied with the archive. Do not infer a commit
+   identifier when the source does not provide one.
+3. Replace only original-owned files from the archive on the temporary branch.
+   Preserve the nested `.git/`, `docker/`, `.build-docker/`, `.local-secrets/`, and other
+   explicitly local files. Commit the verified clean vendor snapshot as a
+   single, clearly labeled import commit on the temporary branch.
+4. Diff the temporary branch against the old `3hs` tip. Confirm it contains only
+   original-source changes and none of the 3LS or Docker overlay files.
+5. Run the applicable source checks on the temporary branch. Confirm `3hs` is an
+   ancestor of the verified import tip, then fast-forward local `3hs` to that tip
+   and push the fast-forward update to `origin/3hs`. If it cannot fast-forward,
+   stop and resolve the import history without rewriting the durable branch.
+6. Merge the new `3hs` tip into `main`. Do not rebase published `main`. Resolve
+   conflicts by restoring every invariant in this document while retaining
+   upstream functional changes. Keep any Docker-overlay adaptation in a separate
+   commit from the source import.
+7. Run the complete verification checklist and inspect the final graph. Push the
+   append-only `main` history normally. Delete the temporary branch only after
+   both durable refs and the build have been verified.
