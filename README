@@ -58,11 +58,8 @@ need to run a command like the following (adapt as you feel needed):
 
 Substiting "mariko.you" by the official hShop domain.
 
-Additionally you need a file called source/hsapi_auth.c with the following contents
- #include <string.h>
- const char *hsapi_user = "<api-user>";
- const int hsapi_password_length = <password-length-int>;
- void hsapi_password(char *ret) { memcpy(ret, "<api-password>", hsapi_password_length); }
+3LS reads its local server address and HSAPI credentials from
+`/3ds/3ls/server-config` at runtime; they are not compiled into the application.
 
     = = Developement = =
 

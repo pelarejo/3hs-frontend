@@ -4,11 +4,10 @@ Verified on Docker Desktop, Linux arm64, on 2026-09-08: the image built and a
 `debug both` build produced `3ls.elf`, `3ls.3dsx`, and `3ls.cia`. Release mode
 and on-device behavior are untested.
 
-This builds the modified frontend in a fresh copy. The build interface still
-accepts legacy HSAPI authentication and service URL inputs for compatibility;
-the client now reads its local NBAPI/content/update server and HSAPI credentials
-from `/3ds/3ls/server-config` at runtime. The upstream copyright and GPLv3
-notices remain in the source.
+This builds the modified frontend in a fresh copy. The client reads its local
+NBAPI/content/update server and HSAPI credentials from
+`/3ds/3ls/server-config` at runtime. The upstream copyright and GPLv3 notices
+remain in the source.
 CIA metadata identifies the modified client as 3LS with application title ID
 `0004000003DF2000`, separate from upstream 3HS.
 
@@ -24,89 +23,40 @@ standard Docker environment/context configuration.
 
 ## Build
 
-First create the required local credential file with the interactive helper:
+From `3hs-frontend/`, build with the locally maintained Make interface:
 
 ```sh
-make -C docker auth
+make -C docker build
 ```
 
-The helper writes `.local-secrets/hsapi-auth.env` with mode `0600`; that directory
-is ignored by Git. It asks before replacing an existing file and never displays
-the token. To use another location for both setup and builds, set
-`AUTH_FILE=/absolute/or/relative/path`. The file format is exactly:
-
-```text
-HSAPI_USER=your username
-HSAPI_TOKEN=your token
-```
-
-Values may contain spaces, quotes, backslashes, equals signs, and other ordinary
-characters, but must be nonempty single-line byte strings without NUL bytes. Blank, extra, unknown,
-or duplicate entries are rejected. The file is parsed as data and is never sourced
-as shell code. A missing or invalid file stops the build before Docker is invoked.
-The Docker build still translates `HSAPI_TOKEN` into the upstream client's
-`hsapi_password` and `hsapi_password_length` C symbols. Those compatibility names,
-and the upstream `X-Auth-Password` HTTP header name, remain unchanged. Current
-application code does not read those generated symbols: both HTTP backends take
-the username and token from runtime configuration.
-Legacy files containing `HSAPI_PASSWORD` are rejected; rerun `make -C docker auth`.
-
-From `3hs-frontend/`, the locally maintained Make interface can derive all four
-service URLs from one server base (replace the example address with the backend
-host):
+`SITE_URL` is the only build-time URL. It defaults to
+`https://github.com/pelarejo/3ds-local-shop`; override it explicitly when needed:
 
 ```sh
-make -C docker build SERVER_BASE=http://192.168.1.50:8000
+make -C docker build SITE_URL=https://example.com/3ls
 ```
 
-On macOS, print the LAN IPv4 address for the default network interface with
-`ipconfig getifaddr "$(route -n get default 2>/dev/null | awk '/interface:/{print $2; exit}')"`,
-then substitute its output for `192.168.1.50` above.
-
-This sets `NB_BASE` to `SERVER_BASE/nbapi`, `CDN_BASE` to `SERVER_BASE`,
-`UPDATE_BASE` to `SERVER_BASE/update`, and, for legacy convenience, `SITE_URL`
-to `SERVER_BASE/site`. An explicit value overrides only its corresponding
-default; override `SITE_URL` with this project's GitHub Pages URL, for example:
-
-```sh
-make -C docker build SERVER_BASE=http://192.168.1.50:8000 \
-  SITE_URL=https://example.github.io/3ls
-```
-
-Fully explicit configuration remains supported:
-
-```sh
-make -C docker build \
-  NB_BASE=http://192.168.1.50:8000/nbapi \
-  CDN_BASE=http://192.168.1.50:8000 \
-  UPDATE_BASE=http://192.168.1.50:8000/update \
-  SITE_URL=https://example.github.io/3ls
-```
-
-`NB_BASE`, `CDN_BASE`, and `UPDATE_BASE` remain mandatory build-pipeline inputs,
-but current requests do not use the compiled values. At runtime the saved server
-produces catalog URLs under `http://<server>:<port>/nbapi`, content URLs rooted at
+The saved runtime configuration produces catalog URLs under
+`http://<server>:<port>/nbapi`, content URLs rooted at
 `http://<server>:<port>`, and update URLs under
-`http://<server>:<port>/update`. `SITE_URL` is different: it defines
-`HS_SITE_LOC`, the compile-time website shown by the startup notice, and should
-point to the project's GitHub Pages page rather than a local `/site` surface.
+`http://<server>:<port>/update`. The untouched upstream configure step still
+requires corresponding macros, so the container supplies reserved `.invalid`
+placeholders for them. They are fixed implementation details, cannot be
+overridden through Make or the environment, and are not used for requests.
 
-`SERVER_BASE`, when used, and all four resolved values must be absolute `http://`
-or `https://` URLs with a nonempty authority and no trailing slash, query,
-fragment, embedded credentials, comma,
-whitespace, or control characters. Invalid or missing values stop the build before
-Docker is invoked and are revalidated inside the build container.
-
-`SERVER_BASE` fallback is a Make-interface convenience. Calling
-`bash docker/build.sh` directly still requires `NB_BASE`, `CDN_BASE`,
-`UPDATE_BASE`, and `SITE_URL` to be set explicitly.
+`SITE_URL` defines `HS_SITE_LOC`, the compile-time project website shown by the
+startup notice. The client appends `/releases`, so the default opens
+`https://github.com/pelarejo/3ds-local-shop/releases`. It must be an absolute
+`http://` or `https://` URL with a nonempty authority and no trailing slash,
+query, fragment, embedded credentials, comma, whitespace, or control characters.
+An invalid or missing value stops the build before Docker is invoked and is
+revalidated inside the build container.
 
 The build defaults to debug mode and both package formats. Override the build
 settings alongside the required URLs when needed:
 
 ```sh
-make -C docker build MODE=release FORMAT=cia BUILD_JOBS=4 \
-  SERVER_BASE=http://192.168.1.50:8000
+make -C docker build MODE=release FORMAT=cia BUILD_JOBS=4
 ```
 
 Other targets are:
@@ -136,17 +86,9 @@ the image build.
 Each attempt retains a new `.build-docker/runs/build.XXXXXXXX/` containing
 `source/`, `build.log`, and `artifacts/`. Failed runs retain their logs and source
 copy. Successful runs export ELF and requested packages plus dependency versions.
-The credential file is mounted read-only into the transient build container; it is
-not copied into the Docker build context or an image layer. Generated C safely
-escapes every credential byte and is scrubbed from the retained run source on
-success, failure, or interruption.
-
-The compatibility-generated credentials may remain extractable from resulting
-CIA/ELF/3DSX files even though current application code no longer uses them.
 Runtime credentials are stored on the SD card and sent in authentication headers
 over plain HTTP on the LAN. Use a dedicated, unprivileged HSAPI token, protect
-both the credential file and SD-card configuration, do not share artifacts that
-may contain generated credentials, and only use a trusted local network.
+the SD-card configuration, and only use a trusted local network.
 
 ## Verified environment and remaining limits
 

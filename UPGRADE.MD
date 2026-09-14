@@ -94,9 +94,11 @@ downloads similarly use `/nbapi` and the server base. HSAPI username/token value
 also come from `/3ds/3ls/server-config` at runtime.
 
 The public website link is intentionally different. `source/main.cc` displays
-`HS_SITE_LOC "/releases"`, so `HS_SITE_LOC` remains a compile-time value intended
-for this project's GitHub Pages page. Do not redirect that link to the local
-server or add a website field to the runtime server configuration.
+`HS_SITE_LOC "/releases"`, so `HS_SITE_LOC` remains a compile-time value. The
+Docker build defaults it to the
+`https://github.com/pelarejo/3ds-local-shop` base, producing the effective link
+`https://github.com/pelarejo/3ds-local-shop/releases`. Do not derive that link
+from the local server or add a website field to the runtime server configuration.
 
 The 3DSX build cannot self-install a CIA update and remains a manual-update
 target. The Docker workflow currently exports CIA version `0`; before production
@@ -109,12 +111,10 @@ The entire `docker/` directory is a locally maintained integration layer that
 did not exist in baseline commit `983fbc9`. It provides:
 
 - A pinned devkitPro base image plus container-built `bannertool` and `makerom`.
-- Legacy build-time HSAPI credential generation and validation, retained for
-  build-pipeline compatibility even though runtime requests use saved credentials.
-- Build-time `NB_BASE`, `CDN_BASE`, `UPDATE_BASE`, and `SITE_URL` configuration,
-  including `SERVER_BASE` convenience defaults. The first three definitions are
-  compatibility inputs superseded by runtime local-server endpoints; `SITE_URL`
-  becomes `HS_SITE_LOC` and remains the compile-time public website link.
+- Build-time `SITE_URL` configuration for `HS_SITE_LOC`, the compile-time public
+  website link. The upstream configure step's otherwise-unused NBAPI, content,
+  and update definitions receive fixed reserved `.invalid` placeholders inside
+  the container; they are not public build inputs.
 - A read-only source mount and retained build runs under `.build-docker/runs/`.
 
 The Docker image is `3ls-builder:local`, its entrypoint is `build-3ls`, and a
@@ -123,10 +123,8 @@ successful `both` build must export `3ls.elf`, `3ls.3dsx`, and `3ls.cia`.
 `docker/Dockerfile`, and `docker/README.md` must use those names consistently.
 `supplement_font/update.sh` must invalidate `../3ls.3dsx`.
 
-Preserve `docker/`, `.build-docker/`, `.local-secrets/`, and the nested `.git/`
-when importing an upstream ZIP or replacing the upstream-owned source tree.
-Never copy a credential file or generated `source/hsapi_auth.c` into a commit or
-container image.
+Preserve `docker/`, `.build-docker/`, and the nested `.git/` when importing an
+upstream ZIP or replacing the upstream-owned source tree.
 
 ## License and artwork
 
@@ -145,7 +143,7 @@ the upstream art credit in `README`.
 ## Upgrade procedure and verification checklist
 
 1. Ensure the working tree is understood and back up any uncommitted work. Never
-   delete the nested `.git/`, `docker/`, `.build-docker/`, or `.local-secrets/`.
+   delete the nested `.git/`, `docker/`, or `.build-docker/`.
 2. Record the current `3hs` commit and the proposed original-source archive's
    provenance and checksum. Also record an upstream commit identifier when one
    is supplied with the archive.
@@ -175,17 +173,15 @@ the upstream art credit in `README`.
 10. Run static checks:
 
     ```sh
-    bash -n docker/build.sh docker/build-in-container.sh docker/setup-auth.sh docker/validate-base-url.sh
+    bash -n docker/build.sh docker/build-in-container.sh docker/validate-base-url.sh
     perl -c build.pl
     git diff --check
     ```
 
-11. Run a clean Docker `both` build with explicit trusted local endpoints and a
-    dedicated low-privilege token:
+11. Run a clean Docker `both` build with explicit trusted local endpoints:
 
     ```sh
-    make -C docker build MODE=debug FORMAT=both \
-      SERVER_BASE=http://<LAN-IP>:8000
+    make -C docker build MODE=debug FORMAT=both
     ```
 
 12. Verify nonempty `3ls.elf`, `3ls.3dsx`, and `3ls.cia` artifacts. Inspect the
@@ -206,13 +202,12 @@ Use `origin` as the user's writable fork with two durable branches:
 
 - `3hs` is the clean original-source snapshot branch. It must not contain 3LS
   branding, runtime isolation, credentials, or the local Docker overlay.
-- `main` is the working 3LS branch. It contains the local Docker/auth integration
+- `main` is the working 3LS branch. It contains the local Docker integration
   and the 3LS identity/runtime patch stack on top of the snapshot history.
 
 Keep each upstream import, the local-only `docker/` overlay, and 3LS product
 changes in separate commits. This makes later conflicts attributable and keeps
-the overlay reusable. Never commit `.build-docker/`, `.local-secrets/` or the generated
-`source/hsapi_auth.c`.
+the overlay reusable. Never commit `.build-docker/`.
 
 Treat both durable branches as append-only published history. The one-time branch
 migration that established `3hs` and `main` does not authorize future rewrites.
@@ -238,7 +233,7 @@ partially updated:
    upstream commit identifier supplied with the archive. Do not infer a commit
    identifier when the source does not provide one.
 3. Replace only original-owned files from the archive on the temporary branch.
-   Preserve the nested `.git/`, `docker/`, `.build-docker/`, `.local-secrets/`, and other
+   Preserve the nested `.git/`, `docker/`, `.build-docker/`, and other
    explicitly local files. Commit the verified clean vendor snapshot as a
    single, clearly labeled import commit on the temporary branch.
 4. Diff the temporary branch against the old `3hs` tip. Confirm it contains only

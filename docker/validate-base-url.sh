@@ -7,7 +7,7 @@ if [[ $# -ne 1 ]]; then
 fi
 
 name=$1
-case "$name" in SERVER_BASE|NB_BASE|CDN_BASE|UPDATE_BASE|SITE_URL) ;; *)
+case "$name" in SITE_URL) ;; *)
     echo 'Invalid URL variable name.' >&2
     exit 2
 esac

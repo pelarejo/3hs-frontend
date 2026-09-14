@@ -13,8 +13,7 @@ username/token from build-time selection to a versioned SD-card configuration at
 `/3ds/3ls/server-config`. Missing, incomplete, malformed, and unsupported
 configuration is represented by empty/default runtime values and follows the
 existing network error path. The public website link is intentionally outside
-that runtime configuration: it remains the compile-time `HS_SITE_LOC` value and
-is intended to point at this project's GitHub Pages site.
+that runtime configuration: it remains the compile-time `HS_SITE_LOC` value.
 
 Original/upstream files modified:
 
@@ -24,7 +23,7 @@ Original/upstream files modified:
 - `source/main.cc`: loads runtime configuration before network use; the displayed
   website link remains `HS_SITE_LOC "/releases"`.
 - `source/httpclient.cc`: both the HTTPC and curl backends obtain authenticated
-  request header values from runtime configuration instead of `hsapi_auth.c`.
+  request header values directly from runtime configuration.
 - `source/hsapi.cc`: catalog, content, and update URLs are assembled from the
   runtime server address and port. Its compile-time `HS_SITE_LOC` validation is
   retained for the website link used by `source/main.cc`.
@@ -41,24 +40,26 @@ Behavioral differences:
 
 - Settings contains a **3LS server** editor for address, port, HSAPI username,
   and HSAPI token. Token keyboard input uses the existing password mode and the
-  saved token is represented as “configured” rather than displayed.
+  saved token is represented as “configured” rather than displayed. Its Clear
+  button clears all four values and persists them when the editor exits.
 - The configured base is `http://<server>:<port>`. NBAPI uses `/nbapi`, content
   uses the base directly, and updates use `/update`.
 - The website is not derived from the local server. The startup notice displays
-  compile-time `HS_SITE_LOC/releases`; builds should set `HS_SITE_LOC` to the
-  project's GitHub Pages page.
+  compile-time `HS_SITE_LOC/releases`. Docker builds default to
+  `https://github.com/pelarejo/3ds-local-shop/releases`.
 - Authenticated requests send the configured username as `X-Auth-User` and the
   configured token as `X-Auth-Password`. Empty values are still sent through
   the existing authenticated-request path. Unauthenticated requests are not
   changed.
+- Saving opens the configuration file for direct binary overwrite. If writing is
+  interrupted, startup rejects the missing, truncated, or malformed file and
+  uses empty/default runtime values; the user must re-enter the server settings.
 
-The credential-generation scripts and generated `source/hsapi_auth.c` remain
-in the build pipeline temporarily for compatibility. Application code no longer
-references its `hsapi_user`, `hsapi_password`, or `hsapi_password_length`
-symbols. Build-time URL definitions are also retained so the existing configure
-and packaging pipeline remains operational. NBAPI/content/update request URL
-construction is runtime-driven; `HS_SITE_LOC` remains the compile-time website
-location.
+Compile-time HSAPI credential generation has been removed. The Docker container
+passes fixed reserved `.invalid` URL placeholders for the otherwise-unused
+NBAPI/content/update definitions required by the untouched upstream configure
+step. They are not user-configurable. Request URL construction is runtime-driven;
+`HS_SITE_LOC` remains the sole configurable compile-time website location.
 
 ### Rebase guidance
 
@@ -68,8 +69,8 @@ settings row/editor call, runtime header getters in each HTTP backend, runtime
 URL getter calls in HSAPI, and the compile-time `HS_SITE_LOC` use in main. Review
 upstream changes to proxy input, request
 authentication flags, endpoint paths, redirects/resume handling, and settings
-menu types before resolving conflicts. Leave generated authentication machinery
-in place until its removal is handled as a separate build-system change.
+menu types before resolving conflicts. Do not restore compile-time HSAPI
+credential symbols or generation.
 
 ### Manual device/emulator verification
 
@@ -77,8 +78,13 @@ in place until its removal is handled as a separate build-system change.
    existing network error path, with no new onboarding or dialog.
 2. Enter all four values under Settings → 3LS server, exit the editor, restart,
    and confirm the values reload (the token should only show “configured”).
+   Change only the token, exit, restart again, and confirm the replacement token
+   is used rather than the original token.
+   Re-enter the editor, press Clear, confirm all four labels clear immediately,
+   then exit and restart to confirm the cleared configuration persists.
 3. Corrupt the configuration magic/version or truncate the file; confirm startup
-   does not crash and requests follow the existing error path.
+   does not crash and requests follow the existing error path. Re-enter the
+   server settings to restore configuration after an interrupted write.
 4. Against a test server, inspect requests: authenticated catalog/content calls
    contain the configured `X-Auth-User` and `X-Auth-Password`; unauthenticated
    traffic has no new headers. Repeat with empty username/token.
