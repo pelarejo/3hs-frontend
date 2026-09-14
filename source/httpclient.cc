@@ -21,6 +21,8 @@
 #include "nblib/nblib/objects/result.hh"
 #include "update.hh" /* includes net constants like USER_AGENT */
 #include "proxy.hh"
+#include "3ls_config.hh"
+#include "settings.hh"
 #include "error.hh"
 #include "panic.hh"
 #include "log.hh"
@@ -37,10 +39,6 @@
 
 #define TRYJ( expr ) if(R_FAILED(res = ( expr ))) goto fail
 #define HTTP_MAX_REDIRECT 10
-
-extern "C" void        hsapi_password(char *); /* hsapi_auth.c */
-extern "C" const int   hsapi_password_length;  /* hsapi_auth.c */
-extern "C" const char *hsapi_user;             /* hsapi_auth.c */
 
 static http::ResumableDownload *current_download = nullptr;
 static LightLock current_download_lock;
@@ -357,7 +355,6 @@ cancel:
 
 Result http::ResumableDownload::setup_handle(const char *url)
 {
-	char *password;
 	Result res;
 
 	/* the last argument is use_default_proxy, we don't want that since we set it ourselves later */
@@ -371,8 +368,8 @@ Result http::ResumableDownload::setup_handle(const char *url)
 	TRYJ(httpcAddRequestHeaderField(&this->hctx, "User-Agent", USER_AGENT));
 	if(this->flags & http::ResumableDownload::flag_auth)
 	{
-		TRYJ(httpcAddRequestHeaderField(&this->hctx, "X-Auth-User", hsapi_user));
-		/*TRYJ(httpcAddRequestHeaderField(&this->hctx, "X-Auth-Password", password));*/password=(char*)malloc(hsapi_password_length+1);hsapi_password(password);password[hsapi_password_length]=0;TRYJ(httpcAddRequestHeaderField(&this->hctx,"X-Auth-Password",password));memset(password,0,hsapi_password_length);free(password);
+		TRYJ(httpcAddRequestHeaderField(&this->hctx, "X-Auth-User", ls_config::get().username.c_str()));
+		TRYJ(httpcAddRequestHeaderField(&this->hctx, "X-Auth-Password", ls_config::get().token.c_str()));
 	}
 #if 0
 	if(this->flags & http::ResumableDownload::flag_device_auth)
@@ -570,9 +567,8 @@ Result http::ResumableDownload::setup_handle(const char *url)
 
 	if(this->flags & http::ResumableDownload::flag_auth)
 	{
-		char *password;
-		if(!this->append_header("X-Auth-User", hsapi_user)) goto fail;
-		/*TRYJ(httpcAddRequestHeaderField(&this->hctx, "X-Auth-Password", password));*/password=(char*)malloc(hsapi_password_length+1);hsapi_password(password);password[hsapi_password_length]=0;if(!this->append_header("X-Auth-Password",password))goto fail;memset(password,0,hsapi_password_length);free(password);
+		if(!this->append_header("X-Auth-User", ls_config::get().username.c_str())) goto fail;
+		if(!this->append_header("X-Auth-Password", ls_config::get().token.c_str())) goto fail;
 	}
 
 	panic_assert(!get_nsettings()->proxy_port, "Proxy not supported in curl backend!");
@@ -606,4 +602,3 @@ void http::ResumableDownload::backend_global_deinit()
 #else
 	#error "HTTP_BACKEND has an improper value!"
 #endif
-

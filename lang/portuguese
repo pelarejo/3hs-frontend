@@ -82,6 +82,9 @@ cima
 - bottom
 baixo
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Resumir downloads
 
@@ -249,6 +252,9 @@ Descartar
 
 - progbar_screen_desc
 Selecione a posição da barra de progresso.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Resumir downloads depois de uma interrupção de rede.
@@ -466,4 +472,3 @@ Código de produto inválido
 
 - search_prod
 Pesquisar por código de produto
-

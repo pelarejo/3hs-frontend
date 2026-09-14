@@ -138,6 +138,9 @@ amunt
 avall
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
 - resume_dl
 Reprèn les baixades
 
@@ -361,6 +364,9 @@ Esborra
 Tria la posició de la barra de progrés.
 
 # setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
+
 - resume_dl_desc
 Reprèn les baixades després d'interrupcions de la xarxa.
 
@@ -592,4 +598,3 @@ UI_GLYPH_X: Veges una vista prèvia del tema
 # used in extmeta for the alternative name, only used in japanese titles for now
 - alt_name
 Nom alternatiu
-

@@ -82,6 +82,9 @@ superiore
 - bottom
 inferiore
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Riprendi i download
 
@@ -249,6 +252,9 @@ Cancella
 
 - progbar_screen_desc
 Scegli la posizione della barra di avanzamento.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Riprendi i download dopo un'interruzione della connessione alla rete.

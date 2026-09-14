@@ -82,6 +82,9 @@ hShop ID
 - bottom
 Нижний
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Возобновлять загрузки
 
@@ -252,6 +255,9 @@ OK
 
 - progbar_screen_desc
 Выберите экран, на котором будет отображаться индикатор прогресса.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Возобновлять загрузку после разрыва соединения.

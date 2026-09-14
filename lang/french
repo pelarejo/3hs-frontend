@@ -82,6 +82,9 @@ haut
 - bottom
 bas
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Continuer les téléchargements
 
@@ -249,6 +252,9 @@ Supprimer
 
 - progbar_screen_desc
 Choisissez la position de la barre de progression.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Continuer les téléchargements après une interruption réseau.

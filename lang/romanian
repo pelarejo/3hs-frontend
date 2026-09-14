@@ -82,6 +82,9 @@ sus
 - bottom
 jos
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Reluați descărcările
 
@@ -250,6 +253,9 @@ Curățați
 
 - progbar_screen_desc
 Selectați poziția bării de progres.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Reluați descărcările după o întrerupere de rețea.

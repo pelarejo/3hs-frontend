@@ -141,6 +141,9 @@ hShop ID
 Нижнiй
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
 - resume_dl
 Вiдновлювати завантаження
 
@@ -368,6 +371,9 @@ Iм'я користувача
 Оберiть екран для вiдображення iндикатора прогресу.
 
 # setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
+
 - resume_dl_desc
 Вiдновлювати завантаження пiсля розриву з'εднання.
 

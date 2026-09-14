@@ -87,6 +87,17 @@ changes to update or HTTP headers. The existing NB API log-upload route
 `/3hs-log` is a server API compatibility path and is intentionally not renamed;
 changing it requires a coordinated backend contract change.
 
+On the runtime-configured client, `${HS_UPDATE_BASE}` above describes the update
+service role and path contract; the effective update base is assembled from the
+saved local server as `http://<server>:<port>/update`. Catalog NBAPI and content
+downloads similarly use `/nbapi` and the server base. HSAPI username/token values
+also come from `/3ds/3ls/server-config` at runtime.
+
+The public website link is intentionally different. `source/main.cc` displays
+`HS_SITE_LOC "/releases"`, so `HS_SITE_LOC` remains a compile-time value intended
+for this project's GitHub Pages page. Do not redirect that link to the local
+server or add a website field to the runtime server configuration.
+
 The 3DSX build cannot self-install a CIA update and remains a manual-update
 target. The Docker workflow currently exports CIA version `0`; before production
 update releases, define and document a monotonic CIA-version policy in addition
@@ -98,9 +109,12 @@ The entire `docker/` directory is a locally maintained integration layer that
 did not exist in baseline commit `983fbc9`. It provides:
 
 - A pinned devkitPro base image plus container-built `bannertool` and `makerom`.
-- Local HSAPI credential generation and validation.
+- Legacy build-time HSAPI credential generation and validation, retained for
+  build-pipeline compatibility even though runtime requests use saved credentials.
 - Build-time `NB_BASE`, `CDN_BASE`, `UPDATE_BASE`, and `SITE_URL` configuration,
-  including `SERVER_BASE` convenience defaults.
+  including `SERVER_BASE` convenience defaults. The first three definitions are
+  compatibility inputs superseded by runtime local-server endpoints; `SITE_URL`
+  becomes `HS_SITE_LOC` and remains the compile-time public website link.
 - A read-only source mount and retained build runs under `.build-docker/runs/`.
 
 The Docker image is `3ls-builder:local`, its entrypoint is `build-3ls`, and a

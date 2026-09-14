@@ -31,6 +31,7 @@
 #include "installgui.hh"
 #include "mng.hh"
 #include "settings.hh"
+#include "3ls_config.hh"
 #include "extmeta.hh"
 #include "update.hh"
 #include "thread.hh"
@@ -213,6 +214,7 @@ int main(int argc, char* argv[])
 
 	/* check if a new language was set, which happens only when the settings file is reset */
 	bool languageDetected = ensure_settings(); /* log_init() uses settings, so we need this here */
+	ls_config::load();
 	bool disableAutoWlan = false;
 
 	/* write changed made to settings on app exit */
@@ -402,7 +404,7 @@ int main(int argc, char* argv[])
 			.wrap()
 			.add_to(rq);
 
-		ui::builder<ui::Text>(ui::Screen::top, HS_SITE_LOC "/3hs")
+		ui::builder<ui::Text>(ui::Screen::top, HS_SITE_LOC "/releases")
 			.x(ui::layout::center_x)
 			.under(rq.back(), 5.0f)
 			.wrap()
@@ -833,4 +835,3 @@ sel_title:
 
 	exit(0);
 }
-

@@ -82,6 +82,9 @@ Felső kijelző
 - bottom
 Alsó kijelző
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Letöltések folytatása
 
@@ -249,6 +252,9 @@ Törlés
 
 - progbar_screen_desc
 Folyamatjelző sáv pozíciójának kiválasztása.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Hálózati hiba után a letöltések automatikus folytatása.

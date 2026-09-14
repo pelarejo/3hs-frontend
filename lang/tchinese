@@ -109,6 +109,9 @@ hShop ID
 底部
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
 - resume_dl
 恢復下載
 
@@ -332,6 +335,9 @@ Luma3DS 修補檔已生效。
 選擇進度列的位置。
 
 # setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
+
 - resume_dl_desc
 在每次斷線後繼續嘗試重連下載。
 

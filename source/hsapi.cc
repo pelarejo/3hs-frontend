@@ -21,6 +21,7 @@
 #include "settings.hh"
 #include "util.hh"
 #include "log.hh"
+#include "3ls_config.hh"
 
 #include <nblib/nblib.hh>
 
@@ -191,7 +192,7 @@ static hsapi::Index& hindex()
 
 Result hsapi::fetch_index()
 {
-	Result res = nbreq<hsapi::Index>(HS_NB_BASE "/title-index", g_index);
+	Result res = nbreq<hsapi::Index>(ls_config::nb_url() + "/title-index", g_index);
 #if !RELEASE
 	if(R_SUCCEEDED(res))
 		g_indexloaded = true;
@@ -238,38 +239,38 @@ hsapi::IndexMeta& hsapi::imeta() { return hindex().meta; }
 Result hsapi::titles_in(std::vector<hsapi::PartialTitle>& ret, const hsapi::IndexCategory& cat, const hsapi::IndexSubcategory& scat)
 {
 	ilog("Listing titles in subcategory");
-	return nbreqa<hsapi::PartialTitle>(HS_NB_BASE "/title/category/" + cat.name + "/" + scat.name, ret);
+	return nbreqa<hsapi::PartialTitle>(ls_config::nb_url() + "/title/category/" + cat.name + "/" + scat.name, ret);
 }
 
 Result hsapi::title_meta(hsapi::Title& ret, hsapi::hid id)
 {
 	ilog("Transforming PartialTitle into Title");
-	return nbreq<hsapi::Title>(HS_NB_BASE "/title/" + std::to_string(id), ret);
+	return nbreq<hsapi::Title>(ls_config::nb_url() + "/title/" + std::to_string(id), ret);
 }
 
 Result hsapi::search(std::vector<hsapi::PartialTitle>& ret, const std::unordered_map<std::string, std::string>& params)
 {
 	ilog("Performing search action");
-	return nbreqa<hsapi::PartialTitle>(make_query_string_url(HS_NB_BASE "/title/search", params), ret);
+	return nbreqa<hsapi::PartialTitle>(make_query_string_url(ls_config::nb_url() + "/title/search", params), ret);
 }
 
 Result hsapi::random(hsapi::Title& ret)
 {
 	ilog("Getting random title");
-	return nbreq<hsapi::Title>(HS_NB_BASE "/title/random", ret);
+	return nbreq<hsapi::Title>(ls_config::nb_url() + "/title/random", ret);
 }
 
 /* new relations api */
 Result hsapi::single_relations(std::vector<hsapi::RelatedFullTitle>& ret, hsapi::hid id)
 {
 	ilog("getting single title's relations");
-	return nbreqa<hsapi::RelatedFullTitle>(HS_NB_BASE "/title/" + std::to_string(id) + "/relations", ret);
+	return nbreqa<hsapi::RelatedFullTitle>(ls_config::nb_url() + "/title/" + std::to_string(id) + "/relations", ret);
 }
 
 Result hsapi::multiple_relations(std::vector<hsapi::RelatedFullTitle>& ret, const std::vector<hsapi::hid>& ids)
 {
 	ilog("getting multiple title relations");
-	std::string url = HS_NB_BASE "/title/relations/batch?ids=";
+	std::string url = ls_config::nb_url() + "/title/relations/batch?ids=";
 	join_t<hsapi::hid>(url, ids, ",");
 	return nbreqa<hsapi::RelatedFullTitle>(url, ret);
 }
@@ -281,7 +282,7 @@ Result hsapi::batch_related(std::vector<hsapi::Title>& ret, const std::vector<hs
 	if(tids.size() == 0)
 		return OK;
 
-	std::string url = HS_NB_BASE "/title/related/batch?title_ids=";
+	std::string url = ls_config::nb_url() + "/title/related/batch?title_ids=";
 	join_t<ctr::title_id>(url, tids, ",", [](const ctr::title_id &tid) -> std::string { return tid.to_string(); });
 
 	return nbreqa<hsapi::Title>(url, ret);
@@ -290,7 +291,7 @@ Result hsapi::batch_related(std::vector<hsapi::Title>& ret, const std::vector<hs
 Result hsapi::id_pair_by_id(std::vector<hsapi::IdPair>& ret, const std::vector<hsapi::hid>& ids)
 {
 	ilog("Getting ID pairs by IDs");
-	std::string url = HS_NB_BASE "/title/id-pair?ids=";
+	std::string url = ls_config::nb_url() + "/title/id-pair?ids=";
 	join_t<hsapi::hid>(url, ids, ",");
 	return nbreqa<hsapi::IdPair>(url, ret);
 }
@@ -298,7 +299,7 @@ Result hsapi::id_pair_by_id(std::vector<hsapi::IdPair>& ret, const std::vector<h
 Result hsapi::id_pair_by_title_id(std::vector<hsapi::IdPair>& ret, const std::vector<hsapi::htid>& tids)
 {
 	ilog("Getting ID pairs by Title IDs");
-	std::string url = HS_NB_BASE "/title/id-pair?title_ids=";
+	std::string url = ls_config::nb_url() + "/title/id-pair?title_ids=";
 	join_t<ctr::title_id>(url, tids, ",", [](const ctr::title_id &tid) -> std::string { return tid.to_string(); });
 	return nbreqa<hsapi::IdPair>(url, ret);
 }
@@ -306,19 +307,19 @@ Result hsapi::id_pair_by_title_id(std::vector<hsapi::IdPair>& ret, const std::ve
 Result hsapi::get_by_title_id(std::vector<hsapi::Title>& ret, const std::string& title_id)
 {
 	ilog("Getting hshop title by title id");
-	return nbreqa<hsapi::Title>(HS_NB_BASE "/title/id/" + title_id, ret);
+	return nbreqa<hsapi::Title>(ls_config::nb_url() + "/title/id/" + title_id, ret);
 }
 
 Result hsapi::get_by_id(hsapi::Title &ret, const hsapi::hid id)
 {
 	ilog("Getting hshop title by id");
-	return nbreq(HS_NB_BASE "/title/" + std::to_string(id), ret);
+	return nbreq(ls_config::nb_url() + "/title/" + std::to_string(id), ret);
 }
 
 Result hsapi::get_by_ids(std::vector<hsapi::Title>& ret, const std::vector<hsapi::hid>& ids)
 {
 	ilog("Getting hshop titles by id array");
-	std::string url = HS_NB_BASE "/title/batch?ids=";
+	std::string url = ls_config::nb_url() + "/title/batch?ids=";
 	join_t<hsapi::hid>(url, ids, ",");
 	return nbreqa<hsapi::Title>(url, ret);
 }
@@ -331,7 +332,7 @@ Result hsapi::upload_log(const char *contents, u32 size, std::string& logid)
 {
 	ilog("Uploading log");
 	nb::ThsLogResult logres;
-	Result res = nbreq<nb::ThsLogResult>(HS_NB_BASE "/3hs-log", logres, HTTPC_METHOD_POST, contents, size);
+	Result res = nbreq<nb::ThsLogResult>(ls_config::nb_url() + "/3hs-log", logres, HTTPC_METHOD_POST, contents, size);
 	if(R_FAILED(res)) return res;
 	char hex[9];
 	snprintf(hex, 9, "%08X", logres.id);
@@ -342,7 +343,7 @@ Result hsapi::upload_log(const char *contents, u32 size, std::string& logid)
 Result hsapi::get_latest_version_string(std::string& ret)
 {
 	ilog("Getting latest version");
-	Result res = basereq(HS_UPDATE_BASE "/version", ret, HTTPC_METHOD_GET, nullptr, 0, false);
+	Result res = basereq(ls_config::update_url() + "/version", ret, HTTPC_METHOD_GET, nullptr, 0, false);
 	if(R_FAILED(res)) return res;
 	trim(ret, " \t\n");
 	return OK;
@@ -351,7 +352,7 @@ Result hsapi::get_latest_version_string(std::string& ret)
 Result hsapi::get_theme_preview_png(std::string& ret, hsapi::hid id)
 {
 	ilog("Getting theme preview");
-	Result res = basereq(HS_NB_BASE "/title/" + std::to_string(id) + "/theme-preview", ret);
+	Result res = basereq(ls_config::nb_url() + "/title/" + std::to_string(id) + "/theme-preview", ret);
 	if(R_FAILED(res)) return res;
 	nb::Result nres;
 	if(nb::single_object::parse<nb::Result>(nres, (u8 *) ret.c_str(), ret.size()) == nb::StatusCode::SUCCESS)
@@ -366,10 +367,10 @@ Result hsapi::get_theme_preview_png(std::string& ret, hsapi::hid id)
 Result hsapi::get_download_link(std::string& ret, const Title& meta)
 {
 	nb::DLToken tok;
-	Result res = nbreq<nb::DLToken>(HS_CDN_BASE "/nbcontent/" + std::to_string(meta.id) + "/request", tok, HTTPC_METHOD_GET, NULL, 0, true);
+	Result res = nbreq<nb::DLToken>(ls_config::base_url() + "/nbcontent/" + std::to_string(meta.id) + "/request", tok, HTTPC_METHOD_GET, NULL, 0, true);
 	if(R_FAILED(res)) return res;
 
-	ret = HS_CDN_BASE "/nbcontent/" + std::to_string(meta.id) + "?token=" + tok.token;
+	ret = ls_config::base_url() + "/nbcontent/" + std::to_string(meta.id) + "?token=" + tok.token;
 	return OK;
 }
 
@@ -382,11 +383,11 @@ std::string hsapi::update_location(const std::string& ver)
 #ifdef DEVICE_ID
 #define STRING_(id) #id
 #define STRINGIFY(id) STRING_(id)
-	return HS_UPDATE_BASE "/3ls-" + ver + "-" STRINGIFY(DEVICE_ID) ".cia";
+	return ls_config::update_url() + "/3ls-" + ver + "-" STRINGIFY(DEVICE_ID) ".cia";
 #undef STRING_
 #undef STRINGIFY
 #else
-	return HS_UPDATE_BASE "/3ls-" + ver + ".cia";
+	return ls_config::update_url() + "/3ls-" + ver + ".cia";
 #endif
 }
 

@@ -82,6 +82,9 @@ top
 - bottom
 bottom
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Resume downloads
 
@@ -250,6 +253,9 @@ Cleareth
 
 - progbar_screen_desc
 Selecteth the position of the progresseth bar
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Resume downloads aft'r a netw'rk int'rruption

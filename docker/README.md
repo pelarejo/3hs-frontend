@@ -4,9 +4,11 @@ Verified on Docker Desktop, Linux arm64, on 2026-09-08: the image built and a
 `debug both` build produced `3ls.elf`, `3ls.3dsx`, and `3ls.cia`. Release mode
 and on-device behavior are untested.
 
-This builds the modified frontend in a fresh copy using locally supplied HSAPI
-authentication and service URLs. The upstream copyright and GPLv3 notices remain
-in the source.
+This builds the modified frontend in a fresh copy. The build interface still
+accepts legacy HSAPI authentication and service URL inputs for compatibility;
+the client now reads its local NBAPI/content/update server and HSAPI credentials
+from `/3ds/3ls/server-config` at runtime. The upstream copyright and GPLv3
+notices remain in the source.
 CIA metadata identifies the modified client as 3LS with application title ID
 `0004000003DF2000`, separate from upstream 3HS.
 
@@ -42,9 +44,11 @@ Values may contain spaces, quotes, backslashes, equals signs, and other ordinary
 characters, but must be nonempty single-line byte strings without NUL bytes. Blank, extra, unknown,
 or duplicate entries are rejected. The file is parsed as data and is never sourced
 as shell code. A missing or invalid file stops the build before Docker is invoked.
-The Docker build translates `HSAPI_TOKEN` into the upstream client's
+The Docker build still translates `HSAPI_TOKEN` into the upstream client's
 `hsapi_password` and `hsapi_password_length` C symbols. Those compatibility names,
-and the upstream `X-Auth-Password` HTTP header they populate, remain unchanged.
+and the upstream `X-Auth-Password` HTTP header name, remain unchanged. Current
+application code does not read those generated symbols: both HTTP backends take
+the username and token from runtime configuration.
 Legacy files containing `HSAPI_PASSWORD` are rejected; rerun `make -C docker auth`.
 
 From `3hs-frontend/`, the locally maintained Make interface can derive all four
@@ -60,12 +64,13 @@ On macOS, print the LAN IPv4 address for the default network interface with
 then substitute its output for `192.168.1.50` above.
 
 This sets `NB_BASE` to `SERVER_BASE/nbapi`, `CDN_BASE` to `SERVER_BASE`,
-`UPDATE_BASE` to `SERVER_BASE/update`, and `SITE_URL` to `SERVER_BASE/site`.
-An explicit value overrides only its corresponding default, for example:
+`UPDATE_BASE` to `SERVER_BASE/update`, and, for legacy convenience, `SITE_URL`
+to `SERVER_BASE/site`. An explicit value overrides only its corresponding
+default; override `SITE_URL` with this project's GitHub Pages URL, for example:
 
 ```sh
 make -C docker build SERVER_BASE=http://192.168.1.50:8000 \
-  SITE_URL=https://example.test
+  SITE_URL=https://example.github.io/3ls
 ```
 
 Fully explicit configuration remains supported:
@@ -75,14 +80,16 @@ make -C docker build \
   NB_BASE=http://192.168.1.50:8000/nbapi \
   CDN_BASE=http://192.168.1.50:8000 \
   UPDATE_BASE=http://192.168.1.50:8000/update \
-  SITE_URL=http://192.168.1.50:8000/site
+  SITE_URL=https://example.github.io/3ls
 ```
 
-`NB_BASE` and `CDN_BASE` map to the current backend: the catalog API is under
-`http://<LAN-IP>:8000/nbapi`, while content downloads are rooted at
-`http://<LAN-IP>:8000`. The backend does not currently provide update or website
-surfaces, but `UPDATE_BASE` and `SITE_URL` are still mandatory; calls to those
-example paths will fail until the corresponding backend features are implemented.
+`NB_BASE`, `CDN_BASE`, and `UPDATE_BASE` remain mandatory build-pipeline inputs,
+but current requests do not use the compiled values. At runtime the saved server
+produces catalog URLs under `http://<server>:<port>/nbapi`, content URLs rooted at
+`http://<server>:<port>`, and update URLs under
+`http://<server>:<port>/update`. `SITE_URL` is different: it defines
+`HS_SITE_LOC`, the compile-time website shown by the startup notice, and should
+point to the project's GitHub Pages page rather than a local `/site` surface.
 
 `SERVER_BASE`, when used, and all four resolved values must be absolute `http://`
 or `https://` URLs with a nonempty authority and no trailing slash, query,
@@ -134,11 +141,12 @@ not copied into the Docker build context or an image layer. Generated C safely
 escapes every credential byte and is scrubbed from the retained run source on
 success, failure, or interruption.
 
-The credentials remain extractable from resulting CIA/ELF/3DSX files and retained
-build outputs. In addition, the client sends its authentication headers in
-plaintext over HTTP on the LAN because these builds still use HTTP endpoints.
-Use a dedicated, unprivileged HSAPI token, protect the credential file, do not
-share artifacts with embedded credentials, and only use a trusted local network.
+The compatibility-generated credentials may remain extractable from resulting
+CIA/ELF/3DSX files even though current application code no longer uses them.
+Runtime credentials are stored on the SD card and sent in authentication headers
+over plain HTTP on the LAN. Use a dedicated, unprivileged HSAPI token, protect
+both the credential file and SD-card configuration, do not share artifacts that
+may contain generated credentials, and only use a trusted local network.
 
 ## Verified environment and remaining limits
 

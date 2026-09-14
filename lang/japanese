@@ -82,6 +82,9 @@ hShop ID
 - bottom
 下
 
+- shop_server
+3LS Server address
+
 - resume_dl
 ダウンロードを再開する
 
@@ -249,6 +252,9 @@ UI_GLYPH_A をクリックして表示します。
 
 - progbar_screen_desc
 プログレスバーの位置を選択します。
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 ネットワークが中断した後、ダウンロードを再開します。

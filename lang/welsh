@@ -109,6 +109,9 @@ uchaf
 is
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
 - resume_dl
 Ailddechrau lawrlwythiadau
 
@@ -332,6 +335,9 @@ Clirio
 Dewis lleoliad y bar cynydd.
 
 # setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
+
 - resume_dl_desc
 Ailddechrau lawrlwythiadau ar ôl ymyriadau'r cysylltiad rhwydwaith.
 

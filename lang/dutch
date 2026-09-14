@@ -82,6 +82,9 @@ boven
 - bottom
 onder
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Downloads voortzetten
 
@@ -251,6 +254,9 @@ Maak leeg
 
 - progbar_screen_desc
 Het scherm om de laadbalk op te laten verschijnen
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Hervat installaties wanneer zij onderbroken worden

@@ -109,6 +109,9 @@ ID hShop
 долниот
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
 - resume_dl
 Продолжете со преземаньа
 
@@ -332,6 +335,9 @@ Luma3DS game patching е вклучено.
 Изберете jа позициjата на лентата за напредок.
 
 # setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
+
 - resume_dl_desc
 Продолжете со преземаньа по прекин на мрежата.
 

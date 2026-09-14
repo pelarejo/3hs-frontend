@@ -108,6 +108,9 @@ itaas
 ibaba
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
 - resume_dl
 Ipatuloy ang mga download
 
@@ -332,6 +335,9 @@ Alisin
 Piliin ang posisyon ng progress bar.
 
 # setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
+
 - resume_dl_desc
 Ipatuloy ang mga downloads pagkatapos ng pagkagambala sa network
 

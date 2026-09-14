@@ -116,6 +116,7 @@ enum SettingsId
 	ID_Localemode,   // show as text: enum val
 	ID_Direction,    // show as text: enum val
 	ID_Method,       // show as text: enum val
+	ID_ShopServer,   // show as text: custom menu
 	ID_Proxy,        // show as text: custom menu
 	ID_MaxELogs,     // show as text: custom menu
 	ID_ProxyEnabled, // bool: custom menu
@@ -141,4 +142,3 @@ namespace ui { class Theme; }
 std::vector<ui::Theme>& themes();
 
 #endif
-

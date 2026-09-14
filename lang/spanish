@@ -82,6 +82,9 @@ superior
 - bottom
 inferior
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Resumir descargas
 
@@ -249,6 +252,9 @@ Despejar
 
 - progbar_screen_desc
 Selecciona la posición de la barra de progreso.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Reanudar descargas después de una interrupción de la red.

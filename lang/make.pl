@@ -323,7 +323,7 @@ $source_file .= <<EOF;
 	#define PAGE_DONATE "(unset)"
 	#define PAGE_SWITCHING_SD_CARDS "(unset)"
 #else
-	#define PAGE_3HS HS_SITE_LOC "/3hs"
+	#define PAGE_3HS HS_SITE_LOC "/releases"
 	#define PAGE_THEMES HS_SITE_LOC "/wiki/theme-installation"
 	#define PAGE_DONATE HS_SITE_LOC "/donate"
 	#define PAGE_SWITCHING_SD_CARDS HS_SITE_LOC "/wiki/switching-sd-cards"
@@ -523,4 +523,3 @@ if($langs_w_missing) {
 } else {
 	print "translations are complete\n"
 }
-

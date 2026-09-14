@@ -141,6 +141,10 @@ Top
 Bottom
 
 # scroll, setting title
+- shop_server
+3LS Server address
+
+# scroll, setting title
 - resume_dl
 Resume downloads
 
@@ -366,6 +370,10 @@ Clear
 # setting description
 - progbar_screen_desc
 Select the position of the progress bar.
+
+# setting description
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 # setting description
 - resume_dl_desc

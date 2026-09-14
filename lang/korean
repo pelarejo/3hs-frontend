@@ -82,6 +82,9 @@ unknown
 - bottom
 아래
 
+- shop_server
+3LS Server address
+
 - resume_dl
 다운로드 게속하기
 
@@ -249,6 +252,9 @@ UI_GLYPH_A: 보기
 
 - progbar_screen_desc
 다운로드 진행 표시 위치 선택
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 네트워크 환경이 회복될때 다운로드를 게속함
@@ -430,4 +436,3 @@ UI_GLYPH_X: 테마 미리보기
 # used in extmeta for the alternative name, only used in japanese titles for now
 - alt_name
 대체 이름
-

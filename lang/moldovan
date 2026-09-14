@@ -82,6 +82,9 @@ hShop ID
 - bottom
 жос
 
+- shop_server
+3LS Server address
+
 - resume_dl
 Рестаураць дескэркаря
 
@@ -249,6 +252,9 @@ Luma3DS game patching йесте акум порнит.
 
 - progbar_screen_desc
 Селектаць позиця бэрий де прогрес.
+
+- shop_server_desc
+Configure the server address, port, username, and token.
 
 - resume_dl_desc
 Рестаураць дескэркэрилетafter дупэ о ынтрерупере де реця.

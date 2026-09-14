@@ -34,6 +34,7 @@
 #include <string>
 
 #include "proxy.hh"
+#include "3ls_config.hh"
 #include "log.hh"
 
 #define SETTINGS_LOCATION "/3ds/3ls/settings"
@@ -493,6 +494,7 @@ static bool serialize_id_bool(SettingsId ID)
 	case ID_ProgLoc:
 	case ID_Language:
 	case ID_Localemode:
+	case ID_ShopServer:
 	case ID_Proxy:
 	case ID_MaxELogs:
 	case ID_Method:
@@ -528,6 +530,8 @@ static std::string serialize_id_text(SettingsId ID)
 		return i18n::langname(g_nsettings.lang);
 	case ID_Localemode:
 		return localemode2str(SETTING_LUMALOCALE);
+	case ID_ShopServer:
+		return ls_config::base_url();
 	case ID_Proxy:
 		return ISET_PROXY_ENABLED ? STRING(enabled) : STRING(disabled);
 	case ID_MaxELogs:
@@ -880,6 +884,9 @@ static void update_settings_ID(SettingsId ID)
 		break;
 	}
 	// Other
+	case ID_ShopServer:
+		ls_config::show_editor();
+		break;
 	case ID_Proxy:
 		show_update_proxy();
 		break;
@@ -961,6 +968,7 @@ void show_settings()
 		{ str::progbar_screen , str::progbar_screen_desc , ID_ProgLoc    , true  },
 		{ str::language       , str::language_desc       , ID_Language   , true  },
 		{ str::lumalocalemode , str::lumalocalemode_desc , ID_Localemode , true  },
+		{ str::shop_server    , str::shop_server_desc    , ID_ShopServer , true  },
 		{ str::proxy          , str::proxy_desc          , ID_Proxy      , true  },
 		{ str::max_elogs      , str::max_elogs_desc      , ID_MaxELogs   , true  },
 		{ str::def_sort_meth  , str::def_sort_meth_desc  , ID_Method     , true  },
