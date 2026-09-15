@@ -12,7 +12,7 @@ Canfuwyd cadarnwedd anghydnaws.
 
 # displayed under above string
 - install_luma
-Does dim modd defnyddio 3hs ar y sustem hon.
+Does dim modd defnyddio 3ls ar y sustem hon.
 
 # button, button on bottom of screen to enter queue
 - queue
@@ -22,9 +22,9 @@ Ciw
 - fail_init_networking
 Wedi methu cychwyn cysylltiad rhwydwaith
 
-# PAGE_3HS expands to the 3hs page on hShop
+# PAGE_3HS expands to the 3ls page on the server
 - credits_thanks
-Diolch am ddefnyddio 3hs, cleient hShop ar gyfer 3DS.
+Diolch am ddefnyddio 3ls, cleient 3DS ar gyfer eich siop leol.
 Mae'r meddalwedd hwn ar gael yn rhad ac am ddim yn
 PAGE_3HS
 
@@ -56,9 +56,9 @@ ID Teitl
 - category
 Categori
 
-# nowrap, hShop ID used for searching, previously known as landing ID, sort method in switcher in settings
+# nowrap, landing ID used for searching, sort method in switcher in settings
 - landing_id
-ID hShop
+ID glanio
 
 # nowrap, used for category description
 - description
@@ -266,7 +266,7 @@ Ydych chi am ailgychwyn nawr?
 
 # %1 = version int "version desc" (i.e. 1.2.0 "cotidie morimur")
 - this_version
-Dyma 3hs fersiwn %1
+Dyma 3ls fersiwn %1
 
 # request = API HTTP request, may be translated as "failed to access API"
 - retry_req
@@ -296,7 +296,7 @@ Gwasgwch UI_GLYPH_A i fynd yn ôl.
 # %1 = current version
 # %2 = minimum required version
 - min_constraint
-Mae'r fersiwn 3hs cyfredol (%1) yn is na'r fersiwn gofynnol (%2)
+Mae'r fersiwn 3ls cyfredol (%1) yn is na'r fersiwn gofynnol (%2)
 
 # scroll, setting title
 - proxy
@@ -355,11 +355,11 @@ Dewis y fformat amser.
 
 # setting description
 - language_desc
-Dewis yr iaith ar gyfer 3hs.
+Dewis yr iaith ar gyfer 3ls.
 
 # setting description
 - lumalocalemode_desc
-Dewis modd yr autoddewisydd LumaLocale. Mae "awtomatig" yn dewis iaith yn awtomatig. Os ydy hwn wedi'i osod i "â llaw", bydd 3hs yn gofyn i chi am ranbarth ar ôl gosod cynnwys.
+Dewis modd yr autoddewisydd LumaLocale. Mae "awtomatig" yn dewis iaith yn awtomatig. Os ydy hwn wedi'i osod i "â llaw", bydd 3ls yn gofyn i chi am ranbarth ar ôl gosod cynnwys.
 
 # setting description
 - check_extra_desc
@@ -367,7 +367,7 @@ Chwilio am gynnwys ychwanegol ar ôl gosod.
 
 # setting description
 - proxy_desc
-Ffurfweddu gweinydd dirprwyol ar gyfer 3hs. Mae'r gosodiad hwn ar gyfer defnyddwyr uwch.
+Ffurfweddu gweinydd dirprwyol ar gyfer 3ls. Mae'r gosodiad hwn ar gyfer defnyddwyr uwch.
 
 # install all from queue
 - install_all
@@ -404,13 +404,13 @@ if (p1 < 10) {
     switch (p1) {
         case 1:
             return "Wedi ffeindio %1 teitl coll\nGwelwch y ciw i'w osod.";
-        
+
         case 2:
             return "Wedi ffeindio %1 deitl coll\nGwelwch y ciw i'w gosod.";
-        
+
         case 3: case 6:
             return "Wedi ffeindio %1 theitl coll\nGwelwch y ciw i'w gosod.";
-        
+
         default:
             return "Wedi ffeindio %1 teitl coll\nGwelwch y ciw i'w gosod.";
     }
@@ -439,13 +439,13 @@ Defnyddiwch yr ID hwn i gael cefnogaeth:
 %1
 
 # Nintendo blocks, use official Nintendo translation if available
-#  %1 = size in bytes/KiB/MiB/GiB/TiB                            
-#  %2 = amount of blocks                                         
+#  %1 = size in bytes/KiB/MiB/GiB/TiB
+#  %2 = amount of blocks
 - size_plus_block +code(_, number)
 if (p2 < 10) {
     switch (p2) {
         case 2: return "%1 (%2 floc)";
-        
+
         default: return "%1 (%2 bloc)";
     }
 } else {
@@ -458,7 +458,7 @@ Chwiliad yn ôl testun
 
 # nowrap, search menu item
 - search_id
-Chwiliad yn ôl ID hShop
+Chwilio yn ôl ID glanio
 
 # nowrap, search menu item
 - search_tid
@@ -563,7 +563,7 @@ Fflachio'r goleuad LED i roi gwybod i chi am wahanol newidiadau statws, megis pa
 # don't translate "Enable developer UNITINFO", ENVINFO may be translated as configuration, retail may be translated as normal, unit may be translated as variant
 - dev_unitinfo
 Yn ôl ENVINFO y consol hwn, mae hon yn uned ddatblygiadol.
-Fydd 3hs ddim yn gweithio'n iawn ar y sustem hon.
+Fydd 3ls ddim yn gweithio'n iawn ar y sustem hon.
 Os oes 3DS normal gyda chi, sicrhewch bod "Enable developer UNITINFO" yn y ffurfweddiad Luma3DS yn analluog.
 
 # nowrap, used in for examples language select
@@ -791,7 +791,7 @@ Chwiliad normal
 ♪ Chwarae %1 gan %2 ♪
 
 - outdated_system
-Canfuwyd hen gadarnwedd sustem. Mae angen cadarnwedd sustem fersiwn 9.6.0 o leiaf i ddefnyddio 3hs.
+Canfuwyd hen gadarnwedd sustem. Mae angen cadarnwedd sustem fersiwn 9.6.0 o leiaf i ddefnyddio 3ls.
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type

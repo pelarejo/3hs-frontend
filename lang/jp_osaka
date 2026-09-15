@@ -8,7 +8,7 @@
 サポートされてへんファームウェアが検出された。
 
 - install_luma
-このシステムでは3hsは使用できまへん。
+このシステムでは3lsは使用できまへん。
 
 - queue
 キュー
@@ -17,7 +17,7 @@
 ネットワークの初期化に失敗した
 
 - credits_thanks
-hShop用の3dsクライアントである3hsをご利用いただきおおきに！
+ローカルショップ用の3DSクライアントである3lsをご利用いただきおおきに！
 このソフトウェアは、
 PAGE_3HS
 
@@ -44,7 +44,7 @@ UI_GLYPH_B を押して前の画面に戻る
 カテゴリー
 
 - landing_id
-hShop ID
+landing ID
 
 - description
 説明
@@ -120,7 +120,7 @@ hShop ID
 %2秒で再試行する。..
 
 - about_app
-3hsの詳細
+3lsの詳細
 
 - help_manual
 ヘルプ/マニュアル
@@ -201,7 +201,7 @@ Luma3DSゲームパッチが有効になった。
 今すぐ再起動するか？
 
 - this_version
-こら3hsバージョン%1です
+こら3lsバージョン%1です
 
 - retry_req
 要求が失敗した。 リトライするか？
@@ -224,7 +224,7 @@ UI_GLYPH_A を押して戻る。
 戻るにはUI_GLYPH_Aを押してくれへん。
 
 - min_constraint
-現在の3hsバージョン%1は、必要なバージョン%2よりも低なってます
+現在の3lsバージョン%1は、必要なバージョン%2よりも低なってます
 
 - proxy
 プロキシー
@@ -269,16 +269,16 @@ Configure the server address, port, username, and token.
 時間形式を選択する。
 
 - language_desc
-3hsの言語を変更する。
+3lsの言語を変更する。
 
 - lumalocalemode_desc
-LumaLocaleオートセッターのモードを設定する。 自動は言語を自動的に選択する。 これが手動に設定されてる場合、コンテンツのインストール後、3hsでリージョンの入力を求められる。
+LumaLocaleオートセッターのモードを設定する。 自動は言語を自動的に選択する。 これが手動に設定されてる場合、コンテンツのインストール後、3lsでリージョンの入力を求められる。
 
 - check_extra_desc
 インストール後に追加のコンテンツを検索する。
 
 - proxy_desc
-3hsのプロキシサーバーを構成する。 この設定は上級ユーザー向けです。
+3lsのプロキシサーバーを構成する。 この設定は上級ユーザー向けです。
 
 - install_all
 全てインストール
@@ -331,7 +331,7 @@ LumaLocaleオートセッターのモードを設定する。 自動は言語を
 テキストで検索
 
 - search_id
-hShop IDで検索
+landing IDで検索
 
 - search_tid
 タイトルIDで検索
@@ -422,7 +422,7 @@ UI_GLYPH_DPAD_CLEAR/UI_GLYPH_CPAD: ナビゲート
 
 - dev_unitinfo
 このコンソールのENVINFOによると、こら開発ユニットです。
-このシステムでは3hsは正しゅう機能しまへん。
+このシステムでは3lsは正しゅう機能しまへん。
 リテール3DSを使用してる場合は、Luma3DS構成の「Enable developer UNITINFO」が無効になってること確認してくれへん。
 
 # informing user that the preview image (for themes) that was on the server was unable to be displayed
@@ -670,7 +670,7 @@ UI_GLYPH_L/UI_GLYPH_R を押してモードを切り替えます
 
 
 - outdated_system
-時代遅れのシステムファームウェアが検出されよった。 3hsを使用するには、少なくとも9.6.0のシステムファームウェアが必要やねん。
+時代遅れのシステムファームウェアが検出されよった。 3lsを使用するには、少なくとも9.6.0のシステムファームウェアが必要やねん。
 
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important

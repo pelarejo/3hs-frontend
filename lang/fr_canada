@@ -8,7 +8,7 @@ Chargement...
 Version trop veille pour cette appli.
 
 - install_luma
-3hs n'peut pas être utilisé sur cette console.
+3ls n'peut pas être utilisé sur cette console.
 
 - queue
 Queue
@@ -17,7 +17,7 @@ Queue
 Réseau non trouvé
 
 - credits_thanks
-Merci d'avoir utilisé 3hs.
+Merci d'utiliser 3ls.
 Vous pouvez télécharger cette appli sur
 PAGE_3HS
 
@@ -44,7 +44,7 @@ Title ID
 Catégorie
 
 - landing_id
-ID hShop
+ID de landing
 
 - description
 Déscription
@@ -92,7 +92,7 @@ Reprendre les téléchargements
 Montre l'indicateur d'storage libre
 
 - show_battery
-Montre l'indicateur du niveau d'batterie 
+Montre l'indicateur du niveau d'batterie
 
 - time_format
 Format de temps
@@ -201,7 +201,7 @@ La console doit-être redémarré pour que ce changement marche.
 Redémarre maintenant?
 
 - this_version
-La version de 3hs %1
+La version de 3ls %1
 
 - retry_req
 Requête en échec. Réssaie?
@@ -224,7 +224,7 @@ Requête invalide
 Press UI_GLYPH_A to go back.
 
 - min_constraint
-La Version actuelle de 3hs %1 est plus basse que %2
+La Version actuelle de 3ls %1 est plus basse que %2
 
 - proxy
 Proxy
@@ -269,16 +269,16 @@ Active/Désactive l'indicateur du niveau d'batterie.
 Choisis le temps de format.
 
 - language_desc
-Mets le langage pour 3hs.
+Mets le langage pour 3ls.
 
 - lumalocalemode_desc
-Mets le mode du LumaLocale autosetter. Automatique sélectionne un langage automatiquement. Si elle est mis en manuel, 3hs va vous demander pour la région après l'installation du contenu.
+Mets le mode du LumaLocale autosetter. Automatique sélectionne un langage automatiquement. Si elle est mis en manuel, 3ls va vous demander pour la région après l'installation du contenu.
 
 - check_extra_desc
 Recherche de contenu additionel après l'installation du contenu.
 
 - proxy_desc
-Configure un serveur proxy pour 3hs. Ce paramètre est pour les utilisateurs avancés.
+Configure un serveur proxy pour 3ls. Ce paramètre est pour les utilisateurs avancés.
 
 - install_all
 Installe tout
@@ -332,7 +332,7 @@ else       return "%1 (%2 blocs)";
 Recherce par text
 
 - search_id
-Recherche par ID hShop
+Recherche par ID de landing
 
 - search_tid
 Recherche par title ID
@@ -414,7 +414,7 @@ Ceci va flasher la lumière LED pour t'informer de plusieurs changements de stat
 
 - dev_unitinfo
 Cette console a été détecté en tant qu'unité de développement.
-3hs risque de ne pas fonctionner correctement.
+3ls risque de ne pas fonctionner correctement.
 Si vous avez une 3ds normale, soyez sûr d'avoir désactivé "Enable developer UNITINFO" dans le menu de configuration luma.
 
 - hint_navigate

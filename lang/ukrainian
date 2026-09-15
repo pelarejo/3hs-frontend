@@ -1,7 +1,6 @@
 
-# This is the base 3hs translation file.
+# This is the base 3ls translation file.
 # All other translations should derive from this file.
-# If you want to translate 3hs in your language please contact us in the hShop discord server.
 
 # Some strings have a comment which indicates a context, this may help while translating
 #  - If you require context for anything else feel free to ask
@@ -13,7 +12,7 @@
 # UI_GLYPH_ is a prefix for buttons in the system fonts i.e. UI_GLYPH_B is the B button on your 3DS
 #  - They should be kept exactly as-is, they should be encircled by spaces
 #    - Even if your language has no such things, not having a space causes ugly clamping
-# PAGE_ is a prefix for a URL to a hShop page
+# PAGE_ is a prefix for a URL to an external page
 #  - They should be kept exactly as-is, the actual URL gets placed in place of the PAGE_ letters
 # Preserve newlines ("enter"s), they are added for stylistic purposes, most things should neatly wrap
 # Although text wraps in most cases, it's for the best not make your translation too verbose
@@ -29,7 +28,6 @@
 #   - For example, "blocks", "HOME menu", "theme"
 #
 #
-# Any questions and new translations can be posted in the hShop discord channel
 
 # The name of the language this file is for in that language (i.e. Español for Spanish)
 - native_name
@@ -44,7 +42,7 @@
 
 # displayed under above string
 - install_luma
-3hs неможливо використовувати на цiй системi.
+3ls неможливо використовувати на цiй системi.
 
 # button, button on bottom of screen to enter queue
 - queue
@@ -54,9 +52,9 @@
 - fail_init_networking
 Помилка iнiцiалiзацiï мережi
 
-# PAGE_3HS expands to the 3hs page on hShop
+# PAGE_3HS expands to the 3ls page on the server
 - credits_thanks
-Дякуεмо, що використовуεте 3hs — клiεнт hShop для 3DS.
+Дякуεмо, що використовуεте 3ls — клiεнт 3DS для вашого локального магазину.
 Ви можете отримати це ПЗ безкоштовно за адресою
 PAGE_3HS
 
@@ -88,9 +86,9 @@ ID тайтла
 - category
 Категорiя
 
-# nowrap, hShop ID used for searching, previously known as landing ID, sort method in switcher in settings
+# nowrap, landing ID used for searching, sort method in switcher in settings
 - landing_id
-hShop ID
+landing ID
 
 # nowrap, used for category description
 - description
@@ -302,7 +300,7 @@ else       return "З'εднання розiрвано (%1).\nПовторна �
 
 # %1 = version int "version desc" (i.e. 1.2.0 "cotidie morimur")
 - this_version
-Це 3hs версiï %1
+Це 3ls версiï %1
 
 # request = API HTTP request, may be translated as "failed to access API"
 - retry_req
@@ -332,7 +330,7 @@ else       return "З'εднання розiрвано (%1).\nПовторна �
 # %1 = current version
 # %2 = minimum required version
 - min_constraint
-Поточна версiя 3hs %1 нижча за необхiдну %2
+Поточна версiя 3ls %1 нижча за необхiдну %2
 
 # scroll, setting title
 - proxy
@@ -392,7 +390,7 @@ Configure the server address, port, username, and token.
 
 # setting description
 - language_desc
-Встановiть мову iнтерфейсу 3hs.
+Встановiть мову iнтерфейсу 3ls.
 
 # setting description
 - lumalocalemode_desc
@@ -404,7 +402,7 @@ Configure the server address, port, username, and token.
 
 # setting description
 - proxy_desc
-Налаштуйте проксi-сервер для 3hs. Цей параметр призначений для досвiдчених користувачiв.
+Налаштуйте проксi-сервер для 3ls. Цей параметр призначений для досвiдчених користувачiв.
 
 # install all from queue
 - install_all
@@ -473,7 +471,7 @@ else       return "%1 (%2 бл.)";
 
 # legacy; nowrap, search menu item
 - search_id
-Пошук за hShop ID
+Пошук за landing ID
 
 # legacy; nowrap, search menu item
 - search_tid
@@ -578,7 +576,7 @@ else       return "%1 (%2 бл.)";
 # don't translate "Enable developer UNITINFO", ENVINFO may be translated as configuration, retail may be translated as normal, unit may be translated as variant
 - dev_unitinfo
 Згiдно з ENVINFO, ця консоль ε пристроεм для розробникiв.
-3hs не буде працювати коректно на цiй системi.
+3ls не буде працювати коректно на цiй системi.
 Якщо у вас звичайна 3DS, переконайтеся, що опцiю "Enable developer UNITINFO" вимкнено в налаштуваннях Luma3DS.
 
 # nowrap, used in for examples language select
@@ -814,7 +812,7 @@ UI_GLYPH_L/UI_GLYPH_R: змiнити режим пошуку
 ♪ Граε %1 вiд %2 ♪
 
 - outdated_system
-Виявлено застарiлу версiю прошивки. Для роботи 3hs необхiдна прошивка версiï не менше 9.6.0.
+Виявлено застарiлу версiю прошивки. Для роботи 3ls необхiдна прошивка версiï не менше 9.6.0.
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type
@@ -825,14 +823,14 @@ UI_GLYPH_L/UI_GLYPH_R: змiнити режим пошуку
 # -- v1.4.4 barrier -- #
 
 - do_donate
-Якщо hShop став вам у пригодi, будь ласка, зробiть пожертву, вiдвiдавши PAGE_DONATE з iншого пристрою!
+Якщо 3ls став вам у пригодi, будь ласка, зробiть пожертву, вiдвiдавши PAGE_DONATE з iншого пристрою!
 
 # -- v1.4.5 barrier -- #
 
-# This string is a bit weird. It's displayed the first time 3hs is booted and is meant to prevent the question "3hs is in Japanese/Welsh how fix" in the Discord support channels
+# This string is a bit weird. It's displayed the first time 3ls is booted and is meant to prevent the question "3ls is in Japanese/Welsh how fix" in the Discord support channels
 #  %1 = your language name
 - automatically_detected
-3hs автоматично визначив %1 як системну мову. Натиснiть UI_GLYPH_A для пiдтвердження.
+3ls автоматично визначив %1 як системну мову. Натиснiть UI_GLYPH_A для пiдтвердження.
 
 # This is used to dismiss an error screen
 - press_b_continue
@@ -862,11 +860,11 @@ Is this correct? Чи це правильно?
 
 # -- v1.5.0 barrier -- #
 
-# Shown while 3hs is launching, while attempting to enable WiFi if it's disabled.
+# Shown while 3ls is launching, while attempting to enable WiFi if it's disabled.
 - check_net
 Увiмкнення WiFi...
 
-# Shown while 3hs is launching, while attempting to connect to the internet
+# Shown while 3ls is launching, while attempting to connect to the internet
 - check_inet
 Пiдключення до iнтернету...
 
@@ -874,29 +872,29 @@ Is this correct? Чи це правильно?
 - alt_name_n_of_n
 Альтернативна назва (%1/%2) (UI_GLYPH_DPAD_HORIZONTAL/UI_GLYPH_CPAD: змiнити)
 
-# Shown in search when an invalid hShop ID is entered
+# Shown in search when an invalid landing ID is entered
 - invalid_hsid
-Некоректний hShop ID.
+Недійсний landing ID.
 
 # Shown when an update failed or an outdated 3dsx version is used
 - outdated_app
-Ця версiя 3hs застарiла. Для подальшого використання необхiдно встановити останню версiю.
+Ця версiя 3ls застарiла. Для подальшого використання необхiдно встановити останню версiю.
 
 # Shown when an update failed or an outdated 3dsx version is used
 - please_update_manually
-Будь ласка, оновiть 3hs вручну та спробуйте ще раз.
+Будь ласка, оновiть 3ls вручну та спробуйте ще раз.
 
-# Shown when checking for 3hs updates has failed
+# Shown when checking for 3ls updates has failed
 - update_check_failed
-Не вдалося перевiрити наявнiсть оновлень 3hs.
+Не вдалося перевiрити наявнiсть оновлень 3ls.
 
-# Shown when installing a 3hs update has failed
+# Shown when installing a 3ls update has failed
 - update_install_failed
-Не вдалося встановити оновлення 3hs.
+Не вдалося встановити оновлення 3ls.
 
-# Shown when checking for 3hs updates has failed or when installing a 3hs update has failed
+# Shown when checking for 3ls updates has failed or when installing a 3ls update has failed
 - update_try_again_or_update_manually
-Будь ласка, спробуйте ще раз або оновiть 3hs вручну.
+Будь ласка, спробуйте ще раз або оновiть 3ls вручну.
 
 # 1.5.6 barrier
 
@@ -980,15 +978,15 @@ else       return "Знайдено пошкодженi тiкети DLC %1.\nВ�
 
 # 1.5.9 barrier
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_title
 Важливо!
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_text
-3hs — вiльне ПЗ. Якщо ви заплатили за 3hs або доплатили за те, що вiн був у комплектi, негайно вимагайте повернення коштiв!\n
-3hs завжди був i буде безкоштовним тут:
+3ls — вiльне ПЗ. Якщо ви заплатили за 3ls або доплатили за те, що вiн був у комплектi, негайно вимагайте повернення коштiв!\n
+3ls завжди був i буде безкоштовним тут:
 
-# Shown on startup in the "get a refund if you paid for 3hs" message. Should be generic, may be reused for other stuff later.
+# Shown on startup in the "get a refund if you paid for 3ls" message. Should be generic, may be reused for other stuff later.
 - press_any_button_continue
 Натиснiть будь-яку кнопку, щоб продовжити.
