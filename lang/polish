@@ -8,7 +8,7 @@ Polski
 Wykryto nieobsługiwane oprogramowanie.
 
 - install_luma
-3hs nie może być używane w tym systemie.
+3ls nie może być używane w tym systemie.
 
 - queue
 Kolejka
@@ -17,7 +17,7 @@ Kolejka
 Nie udało się zainicjować sieci
 
 - credits_thanks
-Dziękujemy za skorzystanie z 3hs, klienta 3ds dla hShop.
+Dziękujemy za korzystanie z 3ls, klienta 3DS dla Twojego lokalnego sklepu.
 Możesz pobrać to oprogramowanie za darmo pod adresem
 PAGE_3HS
 
@@ -44,7 +44,7 @@ Identyfikator tytułu
 Kategoria
 
 - landing_id
-Identyfikator w hShop
+Identyfikator landing
 
 - description
 Opis
@@ -201,7 +201,7 @@ Aby zmiana zaczęła obowiązywać, należy ponownie uruchomić system.
 Restart now?
 
 - this_version
-To jest wersja 3hs %1
+To jest wersja 3ls %1
 
 - retry_req
 Żądanie nie powiodło się. Spróbować ponownie?
@@ -224,7 +224,7 @@ Nieprawidłowe zapytanie
 Naciśnij UI_GLYPH_A aby wrócić.
 
 - min_constraint
-Ta wersja 3hs %1 jest niższa niż wymagana wersja %2
+Ta wersja 3ls %1 jest niższa niż wymagana wersja %2
 
 - proxy
 Proxy
@@ -269,16 +269,16 @@ Zmień widok wskaźnika poziomu naładowania baterii.
 Wybierz format czasu.
 
 - language_desc
-Ustaw język na 3hs.
+Ustaw język na 3ls.
 
 - lumalocalemode_desc
-Ustaw tryb autosettera LumaLocale. Automatycznie wybiera język automatycznie. Jeśli jest to ustawione na ręczne, 3hs poprosi o region po zainstalowaniu zawartości.
+Ustaw tryb autosettera LumaLocale. Automatycznie wybiera język automatycznie. Jeśli jest to ustawione na ręczne, 3ls poprosi o region po zainstalowaniu zawartości.
 
 - check_extra_desc
 Wyszukaj dodatkowe pliki po instalacji.
 
 - proxy_desc
-Skonfiguruj serwer proxy na 3hs. To ustawienie jest przeznaczone dla zaawansowanych użytkowników.
+Skonfiguruj serwer proxy na 3ls. To ustawienie jest przeznaczone dla zaawansowanych użytkowników.
 
 - install_all
 Zainstaluj wszystko
@@ -332,7 +332,7 @@ else       return "%1 (%2 bloki)";
 Szukaj według tekstu
 
 - search_id
-Szukaj według identyfikatora hShop
+Szukaj według identyfikatora landing
 
 - search_tid
 Szukaj według identyfikatora tytułu
@@ -414,7 +414,7 @@ Spowoduje to miganie diody LED, aby poinformować Cię o różnych zmianach stan
 
 - dev_unitinfo
 Według ENVINFO tej konsoli to jest jednostka programistyczna.
-3hs nie będzie działać poprawnie w tym systemie.
+3ls nie będzie działać poprawnie w tym systemie.
 Jeśli masz detaliczną wersję 3DS, upewnij się, że opcja „Włącz programistę UNITINFO” w konfiguracji Luma3DS jest wyłączona.
 
 - hint_navigate
@@ -519,7 +519,7 @@ Normalne wyszukiwanie
 ♪Grając piosenkę %1 przez %2 ♪
 
 - outdated_system
-Wykryto nieaktualne oprogramowanie systemu. Do korzystania z 3hs wymagane jest oprogramowanie systemowe w wersji co najmniej 9.6.0
+Wykryto nieaktualne oprogramowanie systemu. Do korzystania z 3ls wymagane jest oprogramowanie systemowe w wersji co najmniej 9.6.0
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type
@@ -546,7 +546,7 @@ Alternatywna nazwa (%1/%2) (UI_GLYPH_DPAD_HORIZONTAL/UI_GLYPH_CPAD: switch)
 Audio
 
 - automatically_detected
-3hs automatycznie wykrył %1 jako język systemu. Naciśnij UI_GLYPH_A, aby potwierdzić.
+3ls automatycznie wykrył %1 jako język systemu. Naciśnij UI_GLYPH_A, aby potwierdzić.
 
 - basic_options
 Opcje podstawowe
@@ -567,7 +567,7 @@ Wyłącz wykres opóźnienia
 Wyłącza wykres opóźnienia pokazywany w trakcie instalacji.
 
 - do_donate
-Jeżeli hShop okazał się być dla Ciebie przydatnym, odwiedź PAGE_DONATE na innym urządzeniu!
+Jeżeli 3ls okazał się być dla Ciebie przydatnym, odwiedź PAGE_DONATE na innym urządzeniu!
 
 - empty
 (pusty)
@@ -594,7 +594,7 @@ Automatycznie wybierz subkategorię regionu zgodną z tą konsolą
 Automatycznie otwórz subkategorię zgodną z regionem oprogramowania systemowego, jeżeli taka istnieje.
 
 - invalid_hsid
-Niepoprawne ID hShop.
+Nieprawidłowy identyfikator landing.
 
 - invalid_uniq
 Niepoprawne unikatowe ID
@@ -630,13 +630,13 @@ Przy wytypowanym unikatowym ID nie można wprowadzić żadnych innych parametró
 Inne
 
 - outdated_app
-Ta wersja 3hs jest nieaktualna. Aby móc używać 3hs, musisz mieć zainstalowaną najnowszą wersję.
+Ta wersja 3ls jest nieaktualna. Aby móc używać 3ls, musisz mieć zainstalowaną najnowszą wersję.
 
 - playlist
 playlista
 
 - please_update_manually
-Proszę Zaktualizuj 3hs ręcznie i spróbuj ponownie.
+Proszę Zaktualizuj 3ls ręcznie i spróbuj ponownie.
 
 - press_b_continue
 Naciśnij UI_GLYPH_B aby kontynuować.
@@ -672,23 +672,23 @@ Wyszukaj
 Unikatowe ID
 
 - update_check_failed
-Nie udało się sprawdzić aktualizacji 3hs.
+Nie udało się sprawdzić aktualizacji 3ls.
 
 - update_install_failed
-Nie udało się zaktualizować 3hs.
+Nie udało się zaktualizować 3ls.
 
 - update_try_again_or_update_manually
-Spróbuj ponownie lub Zaktualizuj 3hs ręcznie.
+Spróbuj ponownie lub Zaktualizuj 3ls ręcznie.
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_title
 Uwaga!
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_text
-3hs jest programem darmowym. Jeśli zapłaciłeś za program 3hs lub dodatkowo za jego dołączenie do pakietu, natychmiast poproś o zwrot pieniędzy!\n
-3hs jest i zawsze będzie dostępny do pobrania za darmo pod adresem:
+3ls jest programem darmowym. Jeśli zapłaciłeś za program 3ls lub dodatkowo za jego dołączenie do pakietu, natychmiast poproś o zwrot pieniędzy!\n
+3ls jest i zawsze będzie dostępny do pobrania za darmo pod adresem:
 
-# Shown on startup in the "get a refund if you paid for 3hs" message. Should be generic, may be reused for other stuff later.
+# Shown on startup in the "get a refund if you paid for 3ls" message. Should be generic, may be reused for other stuff later.
 - press_any_button_continue
 Kliknij dowolny przycisk, aby kontynuować.

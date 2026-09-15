@@ -8,7 +8,7 @@
 サポートさりてぃうぅらんファームウェアぬ検出さりやびたん。
 
 - install_luma
-くぬシステムっしぇー3hsー使用なやびらん。
+くぬシステムっしぇー3lsー使用なやびらん。
 
 - queue
 キュー
@@ -17,7 +17,7 @@
 ネットワークぬ初期化んかいしーやんじゃびたん
 
 - credits_thanks
-hShop用ぬ3DSクライアントやん3hsぐ利用いただちにふぇーでーびる！
+ローカルショップ用ぬ3DSクライアントやん3lsぐ利用いただちにふぇーでーびる！
 くぬソフトウェアー、
 PAGE_3HS うぅてぃ完全いちゃんだっし入手なやびーん。
 
@@ -44,7 +44,7 @@ UI_GLYPH_B うち前ぬ画面んかいむどぅいん
 カテゴリー
 
 - landing_id
-hShop ID
+landing ID
 
 - description
 説明
@@ -120,7 +120,7 @@ hShop ID
 %2秒っし再試行さびーん。..
 
 - about_app
-3hsぬ詳細
+3lsぬ詳細
 
 - help_manual
 ヘルプ/マニュアル
@@ -201,7 +201,7 @@ Luma3DSゲームパッチぬ有効なやびたん。
 なまちゃーき再起動さびーが？
 
 - this_version
-くれー3hsバージョン%1やいびーん
+くれー3lsバージョン%1やいびーん
 
 - retry_req
 要求ぬしーやんじゃびたん。 リトライさびーが？
@@ -224,7 +224,7 @@ UI_GLYPH_Aうちむどぅやびーん。
 むどぅいんがーUI_GLYPH_Aうちくぃみそーれー。
 
 - min_constraint
-現在ぬ3hsバージョン%1ー、いりゆーなバージョン%2やかふぃくくなとーいびーん
+現在ぬ3lsバージョン%1ー、いりゆーなバージョン%2やかふぃくくなとーいびーん
 
 - proxy
 プロキシー
@@ -269,16 +269,16 @@ Configure the server address, port, username, and token.
 時間形式選択さびーん。
 
 - language_desc
-3hsぬ言語変更さびーん。
+3lsぬ言語変更さびーん。
 
 - lumalocalemode_desc
-LumaLocaleオートセッターぬモード設定さびーん。 自動ー言語自動的に選択さびーん。 くりが手動んかい設定さりとーるばー、コンテンツぬインストール後、3hsっしリージョンぬ入力むとぅみららりやびーん。
+LumaLocaleオートセッターぬモード設定さびーん。 自動ー言語自動的に選択さびーん。 くりが手動んかい設定さりとーるばー、コンテンツぬインストール後、3lsっしリージョンぬ入力むとぅみららりやびーん。
 
 - check_extra_desc
 インストール後に追加ぬコンテンツ検索さびーん。
 
 - proxy_desc
-3hsぬプロキシサーバー構成さびーん。 くぬ設定ー上級ユーザー向きやいびーん。
+3lsぬプロキシサーバー構成さびーん。 くぬ設定ー上級ユーザー向きやいびーん。
 
 - install_all
 まじりインストール
@@ -331,7 +331,7 @@ LumaLocaleオートセッターぬモード設定さびーん。 自動ー言語
 テキストっし検索
 
 - search_id
-hShop IDっし検索
+landing IDっし検索
 
 - search_tid
 タイトルIDっし検索
@@ -422,7 +422,7 @@ UI_GLYPH_DPAD_CLEAR/UI_GLYPH_CPAD: ナビゲート
 
 - dev_unitinfo
 くぬコンソールぬENVINFOんかいゆいねー、くれー開発ユニットやいびーん。
-くぬシステムっしぇー3hsー正しく機能さびらん。
+くぬシステムっしぇー3lsー正しく機能さびらん。
 リテール3DS使用そーるばーや、Luma3DS構成ぬ「Enable developer UNITINFO」が無効なとーるくとぅ確認しくぃみそーれー。
 
 # informing user that the preview image (for themes) that was on the server was unable to be displayed
@@ -666,7 +666,7 @@ UI_GLYPH_L/UI_GLYPH_R うちモード切り替いやびーん
 
 
 - outdated_system
-時代遅りぬシステムファームウェアぬ検出さりやびたん。 3hs使用すんがー、少なくとぅむ9.6.0ぬシステムファームウェアぬいりゆーやいびーん。
+時代遅りぬシステムファームウェアぬ検出さりやびたん。 3ls使用すんがー、少なくとぅむ9.6.0ぬシステムファームウェアぬいりゆーやいびーん。
 
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important

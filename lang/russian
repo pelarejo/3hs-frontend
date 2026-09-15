@@ -8,7 +8,7 @@
 Обнаружена не поддерживаемая прошивка.
 
 - install_luma
-3hs невозможно использовать в данной системе.
+3ls невозможно использовать в данной системе.
 
 - queue
 Очередь
@@ -17,7 +17,7 @@
 Ошибка инициализации сети
 
 - credits_thanks
-Спасибо, что используете 3hs, клиент hShop для 3DS.
+Спасибо, что используете 3ls, клиент 3DS для вашего локального магазина.
 Это программное обеспечение доступно бесплатно по адресу
 PAGE_3HS
 
@@ -44,7 +44,7 @@ Title ID
 Категория
 
 - landing_id
-hShop ID
+landing ID
 
 - description
 Описание
@@ -204,7 +204,7 @@ OK
 Перезагрузить сейчас?
 
 - this_version
-Это 3hs версии %1
+Это 3ls версии %1
 
 - retry_req
 Не удалось выполнить запрос. Повторить?
@@ -227,7 +227,7 @@ OK
 Нажмите UI_GLYPH_A, чтобы вернуться.
 
 - min_constraint
-Текущая версия 3hs %1 ниже требуемой версии %2
+Текущая версия 3ls %1 ниже требуемой версии %2
 
 - proxy
 Прокси
@@ -272,10 +272,10 @@ Configure the server address, port, username, and token.
 Выберите формат времени.
 
 - language_desc
-Выберите язык 3hs.
+Выберите язык 3ls.
 
 - lumalocalemode_desc
-Выберите режим LumaLocale. Если выбрана опция "вручную", 3hs будет предлагать выбрать регион после установки контента.
+Выберите режим LumaLocale. Если выбрана опция "вручную", 3ls будет предлагать выбрать регион после установки контента.
 
 - check_extra_desc
 Искать дополнительный контент после установки.
@@ -342,7 +342,7 @@ else                       return "%1 (%2 блоков)";
 Поиск по тексту
 
 - search_id
-Поиск по hShop ID
+Поиск по landing ID
 
 - search_tid
 Поиск по Title ID
@@ -424,7 +424,7 @@ else                       return "%1 (%2 блоков)";
 
 - dev_unitinfo
 Согласно значению ENVINFO, эта консоль — устройство для разработчиков.
-На этой системе 3hs не будет работать корректно.
+На этой системе 3ls не будет работать корректно.
 В случае, если это обычная 3DS, убедитесь, что опция "Enable developer UNITINFO" выключена в настройках Luma3DS.
 
 - hint_navigate
@@ -656,26 +656,26 @@ UI_GLYPH_L/UI_GLYPH_R: сменить режим поиска
 ♪ Играет %1 исполнителя %2 ♪
 
 - outdated_system
-Обнаружена устаревшая прошивка. Для использования 3hs необходима прошивка версии не менее 9.6.0.
+Обнаружена устаревшая прошивка. Для использования 3ls необходима прошивка версии не менее 9.6.0.
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type
 Тип Virtual Console
 
-# This string is a bit weird. It's displayed the first time 3hs is booted and is meant to prevent the question "3hs is in Japanese/Welsh how fix" in the Discord support channels
+# This string is a bit weird. It's displayed the first time 3ls is booted and is meant to prevent the question "3ls is in Japanese/Welsh how fix" in the Discord support channels
 #  %1 = your language name
 - automatically_detected
-3hs автоматически определил язык системы: %1. Нажмите UI_GLYPH_A для подтверждения.
+3ls автоматически определил язык системы: %1. Нажмите UI_GLYPH_A для подтверждения.
 
 # Error message for search
 - query_too_short
 Поисковый запрос должен быть не менее 1 символов.
 
-# Shown while 3hs is launching, while attempting to enable WiFi if it's disabled.
+# Shown while 3ls is launching, while attempting to enable WiFi if it's disabled.
 - check_net
 Включение WiFi...
 
-# Shown while 3hs is launching, while attempting to connect to the internet
+# Shown while 3ls is launching, while attempting to connect to the internet
 - check_inet
 Подключение к интернету...
 
@@ -683,24 +683,24 @@ UI_GLYPH_L/UI_GLYPH_R: сменить режим поиска
 - alt_name_n_of_n
 Альтернативное имя (%1/%2) (UI_GLYPH_DPAD_HORIZONTAL/UI_GLYPH_CPAD: переключение)
 
-# Shown in search when an invalid hShop ID is entered
+# Shown in search when an invalid landing ID is entered
 - invalid_hsid
-Недопустимый hShop ID.
+Недопустимый landing ID.
 
-# Shown when checking for 3hs updates has failed
+# Shown when checking for 3ls updates has failed
 - update_check_failed
-Не удалось проверить обновления 3hs.
+Не удалось проверить обновления 3ls.
 
-# Shown when installing a 3hs update has failed
+# Shown when installing a 3ls update has failed
 - update_install_failed
-Не удалось установить обновление 3hs.
+Не удалось установить обновление 3ls.
 
-# Shown when checking for 3hs updates has failed or when installing a 3hs update has failed
+# Shown when checking for 3ls updates has failed or when installing a 3ls update has failed
 - update_try_again_or_update_manually
-Пожалуйста, попробуйте ещё раз или обновите 3hs самостоятельно.
+Пожалуйста, попробуйте ещё раз или обновите 3ls самостоятельно.
 
 - do_donate
-Если hShop оказался для вас полезным, пожалуйста, сделайте пожертвование, посетив PAGE_DONATE с другого устройства!
+Если 3ls оказался для вас полезным, пожалуйста, сделайте пожертвование, посетив PAGE_DONATE с другого устройства!
 
 # This is displayed at the top of an error screen
 - error_occurred
@@ -722,11 +722,11 @@ Is this correct? Это верно?
 
 # Shown when an update failed or an outdated 3dsx version is used
 - outdated_app
-Эта версия 3hs устарела. Чтобы использовать 3hs, необходимо установить актуальную версию.
+Эта версия 3ls устарела. Чтобы использовать 3ls, необходимо установить актуальную версию.
 
 # Shown when an update failed or an outdated 3dsx version is used
 - please_update_manually
-Пожалуйста, обновите 3hs самостоятельно и попробуйте снова.
+Пожалуйста, обновите 3ls самостоятельно и попробуйте снова.
 
 # This is used to dismiss an error screen
 - press_b_continue
@@ -814,17 +814,17 @@ else                            return "Найдено %1 поломанных �
 
 # 1.5.9 barrier
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_title
 Важно!
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_text
-3hs - это свободное программное обеспечение. Если вы заплатили
-за 3hs или доплатили за то, что 3hs был предустановлен на консоль,
+3ls - это свободное программное обеспечение. Если вы заплатили
+за 3ls или доплатили за то, что 3ls был предустановлен на консоль,
 незамедлительно потребуйте возврата денег!\n
-3hs всегда можно скачать бесплатно по ссылке:
+3ls всегда можно скачать бесплатно по ссылке:
 
-# Shown on startup in the "get a refund if you paid for 3hs" message. Should be generic, may be reused for other stuff later.
+# Shown on startup in the "get a refund if you paid for 3ls" message. Should be generic, may be reused for other stuff later.
 - press_any_button_continue
 Нажмите любую кнопку, чтобы продолжить

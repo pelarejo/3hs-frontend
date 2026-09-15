@@ -8,7 +8,7 @@ Aan het laden ...
 Je gebruikt een (C)FW die niet ondersteund is
 
 - install_luma
-Je kan 3hs niet op deze 3DS gebruiken
+Je kan 3ls niet op deze 3DS gebruiken
 
 - queue
 Wachtrij
@@ -17,7 +17,7 @@ Wachtrij
 Kon netwerkdiensten niet opstarten
 
 - credits_thanks
-Bedankt voor het gebruiken van 3hs, een 3DS hShop applicatie
+Bedankt voor het gebruiken van 3ls, een 3DS-client voor je lokale winkel.
 Je kan deze software gratis verkrijgen op
 PAGE_3HS
 
@@ -44,7 +44,7 @@ Titel ID
 Categorie
 
 - landing_id
-hShop ID
+landing-ID
 
 - description
 Beschrijving
@@ -203,7 +203,7 @@ Om de verandering te zien, moet je je 3DS herstarten
 Nu herstarten?
 
 - this_version
-Dit is 3hs versie %1
+Dit is 3ls versie %1
 
 - retry_req
 Opnieuw proberen gegevens te halen?
@@ -226,7 +226,7 @@ Ongeldige zoekopdracht
 Klik op UI_GLYPH_A om terug te gaan
 
 - min_constraint
-Huidige 3hs versie %1 is lager dan het minimale wat %2 is
+Huidige 3ls versie %1 is lager dan het minimale wat %2 is
 
 - proxy
 Proxy
@@ -334,7 +334,7 @@ else       return "%1 (%2 blokken)";
 Zoek op tekst
 
 - search_id
-Vind met hShop ID
+Zoeken op landing-ID
 
 - search_tid
 Vind met titel ID
@@ -412,11 +412,11 @@ Een bestand was geïnstalleerd. Deze zullen niet op je HOME-menu komen
 Zet LED status licht aan
 
 - allow_led_desc
-Dit zorgt ervoor dat 3hs de kleur van de LED kan veranderen om status veranderingen aan te geven, zoals wanneer een titel klaar is met installeren.
+Dit zorgt ervoor dat 3ls de kleur van de LED kan veranderen om status veranderingen aan te geven, zoals wanneer een titel klaar is met installeren.
 
 - dev_unitinfo
 Volgens ENVINFO is deze 3DS een ontwikkelaars variant.
-3hs zal niet correct werken op deze 3DS.
+3ls zal niet correct werken op deze 3DS.
 Als je een normale 3DS hebt, controleer dan of "Enable developer UNITINFO" uit staat in de Luma3DS instellingen.
 
 - hint_navigate
@@ -595,16 +595,16 @@ Normale zoekmethode
 ♪ %1 door %2 aan het spelen ♪
 
 - outdated_system
-Het system heeft een verouderde versie. Om 3hs te gebruiken heb je minstens versie 9.6.0 nodig.
+Het system heeft een verouderde versie. Om 3ls te gebruiken heb je minstens versie 9.6.0 nodig.
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type
 Virtual Console type
 
-# This string is a bit weird. It's displayed the first time 3hs is booted and is meant to prevent the question "3hs is in Japanese/Welsh how fix" in the Discord support channels
+# This string is a bit weird. It's displayed the first time 3ls is booted and is meant to prevent the question "3ls is in Japanese/Welsh how fix" in the Discord support channels
 #  %1 = your language name
 - automatically_detected
-3hs heeft automatisch gedetecteerd dat de systeemtaal %1 is. Klik op UI_GLYPH_A om te bevestigen.
+3ls heeft automatisch gedetecteerd dat de systeemtaal %1 is. Klik op UI_GLYPH_A om te bevestigen.
 
 - press_b_continue
 Klik op UI_GLYPH_B om verder te gaan.
@@ -621,11 +621,11 @@ Is this correct? Klopt dit?
 - alt_name_n_of_n
 Alternatieve naam (%1/%2) (UI_GLYPH_DPAD_HORIZONTAL/UI_GLYPH_CPAD: wissel)
 
-# Shown while 3hs is launching, while attempting to connect to the internet
+# Shown while 3ls is launching, while attempting to connect to the internet
 - check_inet
 Aan het verbinden met het internet...
 
-# Shown while 3hs is launching, while attempting to enable WiFi if it's disabled.
+# Shown while 3ls is launching, while attempting to enable WiFi if it's disabled.
 - check_net
 WiFi aan het inschakelen...
 
@@ -643,7 +643,7 @@ Klaar. Als sommige DLC nog steeds niet werkt, probeer het dan opnieuw te install
 Klik op UI_GLYPH_A om terug te gaan.
 
 - do_donate
-Als je hShop nuttig vond, doneer dan alsjeblieft door PAGE_DONATE te bezoeken op een ander apparaat!
+Als je 3ls nuttig vond, doneer dan alsjeblieft door PAGE_DONATE te bezoeken op een ander apparaat!
 
 # General UI, used in places like the proxy toggle in settings
 - enabled
@@ -661,9 +661,9 @@ UI_GLYPH_B (houd vast): Annuleer download
 - installing_fixed_dlc_tickets
 Gerepareerde DLC tickets aan het installeren...
 
-# Shown in search when an invalid hShop ID is entered
+# Shown in search when an invalid landing ID is entered
 - invalid_hsid
-Ongeldige hShop ID.
+Ongeldige landing-ID.
 
 # invalid unique ID specified during search
 - invalid_uniq
@@ -697,29 +697,29 @@ Ticketdatabase aan het openen...
 
 # Shown when an update failed or an outdated 3dsx version is used
 - outdated_app
-Deze versie van 3hs is verouderd. Om 3hs te gebruiken moet je de laatste versie hebben geïnstalleerd.
+Deze versie van 3ls is verouderd. Om 3ls te gebruiken moet je de laatste versie hebben geïnstalleerd.
 
 # Shown when an update failed or an outdated 3dsx version is used
 - please_update_manually
-Werk 3hs handmatig bij en probeer het opnieuw.
+Werk 3ls handmatig bij en probeer het opnieuw.
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_title
 Belangrijk!
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_text
-3hs is gratis software. Als je hebt betaald voor 3hs of extra hebt betaald as deel van een bundel, vraag meteen je geld terug!\n
-3hs is en zal altijd gratis beschikbaar zijn via:
+3ls is gratis software. Als je hebt betaald voor 3ls of extra hebt betaald as deel van een bundel, vraag meteen je geld terug!\n
+3ls is en zal altijd gratis beschikbaar zijn via:
 
-# Shown on startup in the "get a refund if you paid for 3hs" message. Should be generic, may be reused for other stuff later.
+# Shown on startup in the "get a refund if you paid for 3ls" message. Should be generic, may be reused for other stuff later.
 - press_any_button_continue
 Klik op een knop om verder te gaan.
 
 # Shown in proxy menu, on the top screen
 # Note: "Enabled" and "Disabled" should be the same as the separate "enabled" and "disabled" strings
 - proxy_toggle_hint
-Aan: gebruik een proxy specifiek aan 3hs.
+Aan: gebruik een proxy specifiek aan 3ls.
 Uit: gebruik de proxy geconfigureerd in Systeeminstellingen.
 
 # Error message for search
@@ -730,17 +730,17 @@ De zoekopdracht moet ten minste 1 karakter bevattten.
 - unique_id
 Uniek ID
 
-# Shown when checking for 3hs updates has failed
+# Shown when checking for 3ls updates has failed
 - update_check_failed
-Kon niet controleren op updates voor 3hs.
+Kon niet controleren op updates voor 3ls.
 
-# Shown when installing a 3hs update has failed
+# Shown when installing a 3ls update has failed
 - update_install_failed
-Kon de 3hs update niet installeren.
+Kon de 3ls update niet installeren.
 
-# Shown when checking for 3hs updates has failed or when installing a 3hs update has failed
+# Shown when checking for 3ls updates has failed or when installing a 3ls update has failed
 - update_try_again_or_update_manually
-Probeer het opnieuw of werk 3hs handmatig bij.
+Probeer het opnieuw of werk 3ls handmatig bij.
 
 # Shown when user is asked whether or not to fix tickets
 - fix_n_dlc_tickets +code(number)

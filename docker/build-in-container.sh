@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# /source must be a read-only bind of 3hs-frontend; /output must be a writable
-# bind of 3hs-frontend/.build-docker. Docker Desktop manages toolchain/image storage.
+# /source must be a read-only bind of 3ds-local-shop; /output must be a writable
+# bind of 3ds-local-shop/.build-docker. Docker Desktop manages toolchain/image storage.
 if [[ $# -gt 2 ]]; then
     echo 'Usage: build-3ls [debug|release] [3dsx|cia|both|elf]' >&2
     exit 2

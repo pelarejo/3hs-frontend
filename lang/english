@@ -1,7 +1,6 @@
 
-# This is the base 3hs translation file.
+# This is the base 3ls translation file.
 # All other translations should derive from this file.
-# If you want to translate 3hs in your language please contact us in the hShop discord server.
 
 # Some strings have a comment which indicates a context, this may help while translating
 #  - If you require context for anything else feel free to ask
@@ -13,7 +12,7 @@
 # UI_GLYPH_ is a prefix for buttons in the system fonts i.e. UI_GLYPH_B is the B button on your 3DS
 #  - They should be kept exactly as-is, they should be encircled by spaces
 #    - Even if your language has no such things, not having a space causes ugly clamping
-# PAGE_ is a prefix for a URL to a hShop page
+# PAGE_ is a prefix for a URL to an external page
 #  - They should be kept exactly as-is, the actual URL gets placed in place of the PAGE_ letters
 # Preserve newlines ("enter"s), they are added for stylistic purposes, most things should neatly wrap
 # Although text wraps in most cases, it's for the best not make your translation too verbose
@@ -29,7 +28,6 @@
 #   - For example, "blocks", "HOME menu", "theme"
 #
 #
-# Any questions and new translations can be posted in the hShop discord channel
 
 # The name of the language this file is for in that language (i.e. Español for Spanish)
 - native_name
@@ -44,7 +42,7 @@ An unsupported firmware was detected.
 
 # displayed under above string
 - install_luma
-3hs cannot be used on this system.
+3ls cannot be used on this system.
 
 # button, button on bottom of screen to enter queue
 - queue
@@ -54,9 +52,9 @@ Queue
 - fail_init_networking
 Failed to initialize networking
 
-# PAGE_3HS expands to the 3hs page on hShop
+# PAGE_3HS expands to the 3ls page on the server
 - credits_thanks
-Thank you for using 3hs, a 3DS client for hShop.
+Thank you for using 3ls, a 3DS client for your local shop.
 You can get this software for free at
 PAGE_3HS
 
@@ -88,9 +86,9 @@ Title ID
 - category
 Category
 
-# nowrap, hShop ID used for searching, previously known as landing ID, sort method in switcher in settings
+# nowrap, landing ID used for searching, sort method in switcher in settings
 - landing_id
-hShop ID
+landing ID
 
 # nowrap, used for category description
 - description
@@ -303,7 +301,7 @@ Restart now?
 
 # %1 = version int "version desc" (i.e. 1.2.0 "cotidie morimur")
 - this_version
-This is 3hs version %1
+This is 3ls version %1
 
 # request = API HTTP request, may be translated as "failed to access API"
 - retry_req
@@ -333,7 +331,7 @@ Press UI_GLYPH_A to go back.
 # %1 = current version
 # %2 = minimum required version
 - min_constraint
-Current 3hs version %1 is lower than the required version %2
+Current 3ls version %1 is lower than the required version %2
 
 # scroll, setting title
 - proxy
@@ -394,11 +392,11 @@ Select the time format.
 
 # setting description
 - language_desc
-Set the language for 3hs.
+Set the language for 3ls.
 
 # setting description
 - lumalocalemode_desc
-Set the operating mode for locale emulation setup. "Automatic" will automatically configure the language. "Manual" will make 3hs ask you to choose the language after content installation.
+Set the operating mode for locale emulation setup. "Automatic" will automatically configure the language. "Manual" will make 3ls ask you to choose the language after content installation.
 
 # setting description
 - check_extra_desc
@@ -406,7 +404,7 @@ Search for extra content after installation.
 
 # setting description
 - proxy_desc
-Configure a proxy server for 3hs. This setting is for advanced users.
+Configure a proxy server for 3ls. This setting is for advanced users.
 
 # install all from queue
 - install_all
@@ -475,7 +473,7 @@ Search by text
 
 # legacy; nowrap, search menu item
 - search_id
-Search by hShop ID
+Search by landing ID
 
 # legacy; nowrap, search menu item
 - search_tid
@@ -580,7 +578,7 @@ Flash the LED light to inform you of various status changes.
 # don't translate "Enable developer UNITINFO", ENVINFO may be translated as configuration, retail may be translated as normal, unit may be translated as variant
 - dev_unitinfo
 According to this console's ENVINFO, this is a development unit.
-3hs will not function correctly on this system.
+3ls will not function correctly on this system.
 In case you have a retail 3DS, ensure "Enable developer UNITINFO" in the Luma3DS configuration is disabled.
 
 # nowrap, used in for examples language select
@@ -816,7 +814,7 @@ Normal search
 ♪ Playing %1 by %2 ♪
 
 - outdated_system
-An outdated system firmware was detected. A system firmware of at least 9.6.0 is required to use 3hs.
+An outdated system firmware was detected. A system firmware of at least 9.6.0 is required to use 3ls.
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type
@@ -827,14 +825,14 @@ Virtual Console type
 # -- v1.4.4 barrier -- #
 
 - do_donate
-If you found hShop useful, please make a donation by visiting PAGE_DONATE on another device!
+If you found 3ls useful, please make a donation by visiting PAGE_DONATE on another device!
 
 # -- v1.4.5 barrier -- #
 
-# This string is a bit weird. It's displayed the first time 3hs is booted and is meant to prevent the question "3hs is in Japanese/Welsh how fix" in the Discord support channels
+# This string is a bit weird. It's displayed the first time 3ls is booted and is meant to prevent the question "3ls is in Japanese/Welsh how fix" in the Discord support channels
 #  %1 = your language name
 - automatically_detected
-3hs has automatically detected %1 as the system language. Press UI_GLYPH_A to confirm.
+3ls has automatically detected %1 as the system language. Press UI_GLYPH_A to confirm.
 
 # This is used to dismiss an error screen
 - press_b_continue
@@ -864,11 +862,11 @@ Is this correct? Is this correct?
 
 # -- v1.5.0 barrier -- #
 
-# Shown while 3hs is launching, while attempting to enable WiFi if it's disabled.
+# Shown while 3ls is launching, while attempting to enable WiFi if it's disabled.
 - check_net
 Enabling WiFi...
 
-# Shown while 3hs is launching, while attempting to connect to the internet
+# Shown while 3ls is launching, while attempting to connect to the internet
 - check_inet
 Connecting to the internet...
 
@@ -876,29 +874,29 @@ Connecting to the internet...
 - alt_name_n_of_n
 Alternative name (%1/%2) (UI_GLYPH_DPAD_HORIZONTAL/UI_GLYPH_CPAD: switch)
 
-# Shown in search when an invalid hShop ID is entered
+# Shown in search when an invalid landing ID is entered
 - invalid_hsid
-Invalid hShop ID.
+Invalid landing ID.
 
 # Shown when an update failed or an outdated 3dsx version is used
 - outdated_app
-This version of 3hs is outdated. To use 3hs, you must have the latest version installed.
+This version of 3ls is outdated. To use 3ls, you must have the latest version installed.
 
 # Shown when an update failed or an outdated 3dsx version is used
 - please_update_manually
-Please update 3hs manually and try again.
+Please update 3ls manually and try again.
 
-# Shown when checking for 3hs updates has failed
+# Shown when checking for 3ls updates has failed
 - update_check_failed
-Could not check for 3hs updates.
+Could not check for 3ls updates.
 
-# Shown when installing a 3hs update has failed
+# Shown when installing a 3ls update has failed
 - update_install_failed
-Could not install the 3hs update.
+Could not install the 3ls update.
 
-# Shown when checking for 3hs updates has failed or when installing a 3hs update has failed
+# Shown when checking for 3ls updates has failed or when installing a 3ls update has failed
 - update_try_again_or_update_manually
-Please try again or update 3hs manually.
+Please try again or update 3ls manually.
 
 # 1.5.6 barrier
 
@@ -980,15 +978,15 @@ Enabled
 
 # 1.5.9 barrier
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_title
 Important!
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_text
-3hs is free software. If you paid for 3hs itself or paid extra for it as part of a bundle, please request a refund immediately!\n
-3hs is and will always be free to download from:
+3ls is free software. If you paid for 3ls itself or paid extra for it as part of a bundle, please request a refund immediately!\n
+3ls is and will always be free to download from:
 
-# Shown on startup in the "get a refund if you paid for 3hs" message. Should be generic, may be reused for other stuff later.
+# Shown on startup in the "get a refund if you paid for 3ls" message. Should be generic, may be reused for other stuff later.
 - press_any_button_continue
 Press any button to continue.

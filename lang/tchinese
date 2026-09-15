@@ -12,7 +12,7 @@
 
 # displayed under above string
 - install_luma
-3hs 不能在此系統使用。
+3ls 不能在此系統使用。
 
 # button, button on bottom of screen to enter queue
 - queue
@@ -22,9 +22,9 @@
 - fail_init_networking
 初始化網路連接失敗
 
-# PAGE_3HS expands to the 3hs page on hShop
+# PAGE_3HS expands to the 3ls page on the server
 - credits_thanks
-感謝你使用 3hs 這是 hShop 在 3DS 上的客戶端軟件。
+感謝你使用 3ls，一款用於本地商店的 3DS 用戶端。
 本軟體可以在以下連結免費下載：
 PAGE_3HS
 
@@ -56,9 +56,9 @@ Title ID
 - category
 類別
 
-# nowrap, hShop ID used for searching, previously known as landing ID, sort method in switcher in settings
+# nowrap, landing ID used for searching, sort method in switcher in settings
 - landing_id
-hShop ID
+landing ID
 
 # nowrap, used for category description
 - description
@@ -78,7 +78,7 @@ hShop ID
 
 # nowrap, shown top screen title selection
 - select_title
-選擇一個項目 
+選擇一個項目
 
 # the time format (15:00)
 - fmt_24h
@@ -266,7 +266,7 @@ Luma3DS 修補檔已生效。
 
 # %1 = version int "version desc" (i.e. 1.2.0 "cotidie morimur")
 - this_version
-現在的 3hs 版本是 %1
+現在的 3ls 版本是 %1
 
 # request = API HTTP request, may be translated as "failed to access API"
 - retry_req
@@ -296,7 +296,7 @@ Luma3DS 修補檔已生效。
 # %1 = current version
 # %2 = minimum required version
 - min_constraint
-當前的 3hs 版本 %1 低於需求版本 %2
+當前的 3ls 版本 %1 低於需求版本 %2
 
 # scroll, setting title
 - proxy
@@ -355,11 +355,11 @@ Configure the server address, port, username, and token.
 
 # setting description
 - language_desc
-選擇 3hs 語言。
+選擇 3ls 語言。
 
 # setting description
 - lumalocalemode_desc
-選擇區域模式。「自動」將會自動選擇遊戲語言分區。若設定為「手動」，3hs 會在內容安裝完成後以你指定的語言分區對其進行修改。
+選擇區域模式。「自動」將會自動選擇遊戲語言分區。若設定為「手動」，3ls 會在內容安裝完成後以你指定的語言分區對其進行修改。
 
 # setting description
 - check_extra_desc
@@ -367,7 +367,7 @@ Configure the server address, port, username, and token.
 
 # setting description
 - proxy_desc
-修改 3hs 的代理設置。此選項面向高級用戶。
+修改 3ls 的代理設置。此選項面向高級用戶。
 
 # install all from queue
 - install_all
@@ -433,7 +433,7 @@ Configure the server address, port, username, and token.
 
 # nowrap, search menu item
 - search_id
-hShop ID 搜尋
+依 landing ID 搜尋
 
 # nowrap, search menu item
 - search_tid
@@ -538,7 +538,7 @@ Title ID 搜尋
 # don't translate "Enable developer UNITINFO", ENVINFO may be translated as configuration, retail may be translated as normal, unit may be translated as variant
 - dev_unitinfo
 根據本機的 ENVINFO，這可能是一部 3DS 開發機。
-3hs 將不會在此系統上正確運行。
+3ls 將不會在此系統上正確運行。
 如果你的 3DS 確實是常規機型，請去 Luma3DS 設置中停用 "Enable developer UNITINFO"。
 
 # nowrap, used in for examples language select

@@ -8,7 +8,7 @@ Caricamento...
 Nu' firewall che non se può suopportà è stato rilevat.
 
 - install_luma
-3hs non gira n'goppa stò sistema.
+3ls non gira n'goppa stò sistema.
 
 - queue
 Coda
@@ -17,7 +17,7 @@ Coda
 Impossibile inizializzare a' rete
 
 - credits_thanks
-Grazie ppe aver scelto 3hs, app hShop ppe 3DS.
+Grazie ppe aver scelto 3ls, nu client 3DS ppe 'a puteca locale.
 Puoi prendere gratis chistu software a
 PAGE_3HS
 
@@ -44,7 +44,7 @@ ID titul'
 Categoria
 
 - landing_id
-hShop ID
+ID landing
 
 - description
 Descrizione
@@ -201,7 +201,7 @@ O' sistem per avè i cambiament dev esser riavviat.
 Vuò riavvià mo?
 
 - this_version
-Chist è a versiun o' 3hs %1
+Chist è a versiun o' 3ls %1
 
 - retry_req
 A richiest' è fallit. Ripruv?
@@ -224,7 +224,7 @@ A richiest nun va bon
 Priem UI_GLYPH_Aper per turnà aret
 
 - min_constraint
-Chest versiun ndo' 3hs %1 è truopp viecch ro' normal %2
+Chest versiun ndo' 3ls %1 è truopp viecch ro' normal %2
 
 - proxy
 Proxy
@@ -269,16 +269,16 @@ Sciegl se vuoò verè o stat liber rà batterie.
 Seleziun o fortmat rè' or.
 
 - language_desc
-Impuost a leng ro' 3hs.
+Impuost a leng ro' 3ls.
 
 - lumalocalemode_desc
-Impuost a modalità ro' Lumalocale autosetter. "Va sul iss" seleziun a leng sul iss. Se vuò metter "manual",3hs vuò sapè a ru' vien'.
+Impuost a modalità ro' Lumalocale autosetter. "Va sul iss" seleziun a leng sul iss. Se vuò metter "manual",3ls vuò sapè a ru' vien'.
 
 - check_extra_desc
 Cierc contenut extra aropp l installaziun.
 
 - proxy_desc
-Configur nu' server proxy po' 3hs. Chist è na' impstaziun per utient eshpiert.
+Configur nu' server proxy po' 3ls. Chist è na' impstaziun per utient eshpiert.
 
 - install_all
 Install tutt
@@ -296,7 +296,7 @@ muostr nù messagg prim rè' installà nu aggiurniament goppa nu DLC se o giuoc 
 Errur rà riproduzin vist durant l'elaburaziun ra' cod.
 
 - log
-Contruoll e registr 
+Contruoll e registr
 
 - upload_logs
 Contruoll gli upload
@@ -332,7 +332,7 @@ else       return "%1 (%2 e bluocc)";
 Cierch tramit u tiest
 
 - search_id
-Cierc tramit o' ID hShop
+Cierc tramit' a ll'ID landing
 
 - search_tid
 Cierc tramit ID Titul
@@ -359,7 +359,7 @@ Mietd ro' ordinamient nun valid
 Direziun ro' ordinamient nun valid
 
 - invalid_includes
-Filtr ra' inclusiun nun valid 
+Filtr ra' inclusiun nun valid
 
 - invalid_excludes
 Filtr ra' esclusion nun valid
@@ -368,7 +368,7 @@ Filtr ra' esclusion nun valid
 Rilevat na' cuntraddiziun inde filtr a ricerc specificat
 
 - lgy_search
-Ricierc classic 
+Ricierc classic
 
 - sure_reset
 Si sicur che vuò ripristrinà e tue impustaziun?
@@ -439,4 +439,3 @@ UI_GLYPH_X: guard' già o' tiem
 # used in extmeta for the alternative name, only used in japanese titles for now
 - alt_name
 O nomm alternativ
-

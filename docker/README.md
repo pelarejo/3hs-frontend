@@ -23,7 +23,7 @@ standard Docker environment/context configuration.
 
 ## Build
 
-From `3hs-frontend/`, build with the locally maintained Make interface:
+From `3ds-local-shop/`, build with the locally maintained Make interface:
 
 ```sh
 make -C docker build
@@ -68,7 +68,7 @@ make -C docker image-clean
 make -C docker distclean
 ```
 
-`clean` removes only `3hs-frontend/.build-docker/`. `image-clean` removes only the
+`clean` removes only `3ds-local-shop/.build-docker/`. `image-clean` removes only the
 local `3ls-builder:local` image and succeeds when that image is already absent.
 `distclean` performs both operations. None of these commands performs a global
 Docker prune.

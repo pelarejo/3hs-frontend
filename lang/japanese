@@ -8,7 +8,7 @@
 サポートされていないファームウェアが検出されました。
 
 - install_luma
-このシステムでは3hsは使用できません。
+このシステムでは3lsは使用できません。
 
 - queue
 キュー
@@ -17,7 +17,7 @@
 ネットワークの初期化に失敗しました
 
 - credits_thanks
-hShop用の3DSクライアントである3hsをご利用いただきありがとうございます！
+ローカルショップ用の3DSクライアントである3lsをご利用いただきありがとうございます！
 このソフトウェアは、
 PAGE_3HS
 
@@ -44,7 +44,7 @@ UI_GLYPH_B を押して前の画面に戻る
 カテゴリー
 
 - landing_id
-hShop ID
+landing ID
 
 - description
 説明
@@ -120,7 +120,7 @@ hShop ID
 %2秒で再試行します。..
 
 - about_app
-3hsの詳細
+3lsの詳細
 
 - help_manual
 ヘルプ/マニュアル
@@ -201,7 +201,7 @@ Luma3DSゲームパッチが有効になりました。
 今すぐ再起動しますか？
 
 - this_version
-これは3hsバージョン%1です
+これは3lsバージョン%1です
 
 - retry_req
 要求が失敗しました。 リトライしますか？
@@ -224,7 +224,7 @@ Luma3DSゲームパッチが有効になりました。
 戻るには UI_GLYPH_A を押してください。
 
 - min_constraint
-現在の3hsバージョン%1は、必要なバージョン%2よりも低くなっています
+現在の3lsバージョン%1は、必要なバージョン%2よりも低くなっています
 
 - proxy
 プロキシー
@@ -269,16 +269,16 @@ Configure the server address, port, username, and token.
 時間形式を選択します。
 
 - language_desc
-3hsの言語を変更します。
+3lsの言語を変更します。
 
 - lumalocalemode_desc
-LumaLocaleオートセッターのモードを設定します。 自動は言語を自動的に選択します。 これが手動に設定されている場合、コンテンツのインストール後、3hsでリージョンの入力を求められます。
+LumaLocaleオートセッターのモードを設定します。 自動は言語を自動的に選択します。 これが手動に設定されている場合、コンテンツのインストール後、3lsでリージョンの入力を求められます。
 
 - check_extra_desc
 インストール後に追加のコンテンツを検索します。
 
 - proxy_desc
-3hsのプロキシサーバーを構成します。 この設定は上級ユーザー向けです。
+3lsのプロキシサーバーを構成します。 この設定は上級ユーザー向けです。
 
 - install_all
 全てインストール
@@ -331,7 +331,7 @@ LumaLocaleオートセッターのモードを設定します。 自動は言語
 テキストで検索
 
 - search_id
-hShop IDで検索
+landing IDで検索
 
 - search_tid
 タイトルIDで検索
@@ -422,7 +422,7 @@ UI_GLYPH_DPAD_CLEAR/UI_GLYPH_CPAD: ナビゲート
 
 - dev_unitinfo
 このコンソールのENVINFOによると、これは開発ユニットです。
-このシステムでは3hsは正しく機能しません。
+このシステムでは3lsは正しく機能しません。
 リテール3DSを使用している場合は、Luma3DS構成の「Enable developer UNITINFO」が無効になっていることを確認してください。
 
 # informing user that the preview image (for themes) that was on the server was unable to be displayed
@@ -666,21 +666,22 @@ UI_GLYPH_L/UI_GLYPH_R を押してモードを切り替えます
 
 
 - outdated_system
-時代遅れのシステムファームウェアが検出されました。 3hsを使用するには、少なくとも9.6.0のシステムファームウェアが必要です。
+時代遅れのシステムファームウェアが検出されました。 3lsを使用するには、少なくとも9.6.0のシステムファームウェアが必要です。
 
 
 # used as a subtext for display the virtual console type in extmeta, "Virtual Console" should probably be left untranslated, double capital (the V and C) is very important
 - virtual_console_type
 バーチャルコンソールのタイプ
 
-# Shown when checking for 3hs updates has failed
+
+# Shown when checking for 3ls updates has failed
 - update_check_failed
-3hsの更新を確認できませんでした。
+3lsの更新を確認できませんでした。
 
-# Shown when installing a 3hs update has failed
+# Shown when installing a 3ls update has failed
 - update_install_failed
-3hsの更新をインストール出来ませんでした。
+3lsの更新をインストール出来ませんでした。
 
-# Shown when checking for 3hs updates has failed or when installing a 3hs update has failed
+# Shown when checking for 3ls updates has failed or when installing a 3ls update has failed
 - update_try_again_or_update_manually
-もう一度試すか、3hsを手動で更新してください。
+もう一度試すか、3lsを手動で更新してください。

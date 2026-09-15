@@ -12,7 +12,7 @@
 
 # displayed under above string
 - install_luma
-3hs 不能在此系统使用。
+3ls 不能在此系统使用。
 
 # button, button on bottom of screen to enter queue
 - queue
@@ -22,9 +22,9 @@
 - fail_init_networking
 初始化网络连接失败
 
-# PAGE_3HS expands to the 3hs page on hShop
+# PAGE_3HS expands to the 3ls page on the server
 - credits_thanks
-感谢你使用 3hs 这是 hShop 在 3DS 上的客户端软件。
+感谢你使用 3ls，一款用于本地商店的 3DS 客户端。
 本软件可以在以下链接免费下载：
 PAGE_3HS
 
@@ -56,9 +56,9 @@ Title ID
 - category
 类别
 
-# nowrap, hShop ID used for searching, previously known as landing ID, sort method in switcher in settings
+# nowrap, landing ID used for searching, sort method in switcher in settings
 - landing_id
-hShop ID
+landing ID
 
 # nowrap, used for category description
 - description
@@ -266,7 +266,7 @@ Luma3DS 游戏补丁已生效。
 
 # %1 = version int "version desc" (i.e. 1.2.0 "cotidie morimur")
 - this_version
-当前的 3hs 版本是 %1
+当前的 3ls 版本是 %1
 
 # request = API HTTP request, may be translated as "failed to access API"
 - retry_req
@@ -296,7 +296,7 @@ Luma3DS 游戏补丁已生效。
 # %1 = current version
 # %2 = minimum required version
 - min_constraint
-当前的 3hs 版本 %1 低于需求版本 %2
+当前的 3ls 版本 %1 低于需求版本 %2
 
 # scroll, setting title
 - proxy
@@ -355,11 +355,11 @@ Configure the server address, port, username, and token.
 
 # setting description
 - language_desc
-选择 3hs 语言。
+选择 3ls 语言。
 
 # setting description
 - lumalocalemode_desc
-选择跨区模式。“自动”将会自动选择游戏语言分区。若设定为“手动”，3hs 会在内容安装完成后以你指定的语言分区对其进行修改。
+选择跨区模式。“自动”将会自动选择游戏语言分区。若设定为“手动”，3ls 会在内容安装完成后以你指定的语言分区对其进行修改。
 
 # setting description
 - check_extra_desc
@@ -367,7 +367,7 @@ Configure the server address, port, username, and token.
 
 # setting description
 - proxy_desc
-修改 3hs 的代理设置。此选项面向高级用户。
+修改 3ls 的代理设置。此选项面向高级用户。
 
 # install all from queue
 - install_all
@@ -433,7 +433,7 @@ Configure the server address, port, username, and token.
 
 # nowrap, search menu item
 - search_id
-hShop ID 搜索
+按 landing ID 搜索
 
 # nowrap, search menu item
 - search_tid
@@ -538,7 +538,7 @@ Title ID 搜索
 # don't translate "Enable developer UNITINFO", ENVINFO may be translated as configuration, retail may be translated as normal, unit may be translated as variant
 - dev_unitinfo
 根据本设备的 ENVINFO，这可能是一台 3DS 开发机。
-3hs 将不会在此系统上正确运行。
+3ls 将不会在此系统上正确运行。
 如果你的 3DS 的确是常规机型，请去 Luma3DS 设置中禁用 "Enable developer UNITINFO"。
 
 # nowrap, used in for examples language select

@@ -8,7 +8,7 @@ Laden ...
 Dieses Gerät verwendet eine nicht unterstützte Firmware
 
 - install_luma
-3hs kann auf diesem Gerät nicht verwendet werden
+3ls kann auf diesem Gerät nicht verwendet werden
 
 - queue
 Warteschlange
@@ -17,7 +17,7 @@ Warteschlange
 Netzwerkverbindung fehlgeschlagen
 
 - credits_thanks
-Danke, dass du 3hs nutzt. 3hs ist ein 3DS-Client für hShop.
+Danke, dass du 3ls nutzt. 3hs ist ein 3DS-Client für deinen lokalen Shop.
 Du kannst diese Software auf
 PAGE_3HS kostenlos herunterladen.
 
@@ -44,7 +44,7 @@ Title-ID
 Kategorie
 
 - landing_id
-hShop-ID
+Landing-ID
 
 - description
 Beschreibung
@@ -201,7 +201,7 @@ Damit die Änderungen übernommen werden können, musst du deinen 3DS neustarten
 Jetzt neustarten?
 
 - this_version
-Dies ist 3hs Version %1
+Dies ist 3ls Version %1
 
 - retry_req
 Erneut versuchen?
@@ -224,7 +224,7 @@ Ungültige Anfrage
 Drücke UI_GLYPH_A um zurückzukehren
 
 - min_constraint
-Jetztige 3hs-Version %1 ist älter als die benötigte Version %2
+Jetztige 3ls-Version %1 ist älter als die benötigte Version %2
 
 - proxy
 Proxy
@@ -269,10 +269,10 @@ Batterieanzeige in der Ecke oben links anzeigen
 Dein bevorzugtes Zeitformat, entweder 24-Stunden or 12-Stunden.
 
 - language_desc
-Die Sprache, die 3hs verwenden soll.
+Die Sprache, die 3ls verwenden soll.
 
 - lumalocalemode_desc
-Der Modus der LumaLocale autosetter verwdendet. Automatisch wird eine Sprache automatisch auswählen. Falls du Manuell auswählst, wird 3hs dich um die Region fragen nach der Installation eines Inhalts
+Der Modus der LumaLocale autosetter verwdendet. Automatisch wird eine Sprache automatisch auswählen. Falls du Manuell auswählst, wird 3ls dich um die Region fragen nach der Installation eines Inhalts
 
 - check_extra_desc
 Nach zusätzlichen Inhalten suchen nach einer Installation
@@ -332,7 +332,7 @@ else       return "%1 (%2 Blöcke)";
 Mithilfe von Text suchen
 
 - search_id
-Mithilfe einer hShop-ID suchen
+Nach Landing-ID suchen
 
 - search_tid
 Mithilfe einer Title-ID suchen
@@ -415,7 +415,7 @@ Dies wird die LED-Statusleuchte einschalten, um verschiedene Statusänderungen a
 
 - dev_unitinfo
 Gemäß der ENVINFO dieses Geräts wurde festgestellt, dass dies ein Entwicklermodell ist.
-3hs wird auf diesem Gerät nicht korrekt funktionieren.
+3ls wird auf diesem Gerät nicht korrekt funktionieren.
 Falls dieses Gerät kein Entwicklermodell ist, stelle sicher, dass "Enable developer UNITINFO" in der Luma3DS-Konfiguration ausgeschaltet ist.
 
 - hint_navigate
@@ -589,7 +589,7 @@ Normale Suche
 ♪ Spielt %1 von %2 ♪
 
 - outdated_system
-Eine veraltete Systemfirmware wurde gefunden. Eine Systemfirmware von mindestens 9.6.0 ist benötigt um 3hs zu verwenden.
+Eine veraltete Systemfirmware wurde gefunden. Eine Systemfirmware von mindestens 9.6.0 ist benötigt um 3ls zu verwenden.
 
 - virtual_console_type
 Virtual Console-Typ
@@ -598,7 +598,7 @@ Virtual Console-Typ
 Alternativer Name (%1/%2) (UI_GLYPH_DPAD_HORIZONTAL/UI_GLYPH_CPAD: wechseln)
 
 - automatically_detected
-3hs hat automatisch %1 als die Systemsprache ausgewählt. Drücke UI_GLYPH_A um dies zu bestätigen.
+3ls hat automatisch %1 als die Systemsprache ausgewählt. Drücke UI_GLYPH_A um dies zu bestätigen.
 
 - check_inet
 Stelle Internetverbindung her...
@@ -607,13 +607,13 @@ Stelle Internetverbindung her...
 Schalte WLAN ein...
 
 - do_donate
-Wenn du hShop nützlich findest, bitte Spende uns indem du PAGE_DONATE auf einem anderen Gerät besuchst!
+Wenn du 3ls nützlich findest, bitte Spende uns indem du PAGE_DONATE auf einem anderen Gerät besuchst!
 
 - error_occurred
 Ein Fehler ist aufgetreten
 
 - invalid_hsid
-Ungültige hShop-ID.
+Ungültige Landing-ID.
 
 - language_detected
 Detected language: German
@@ -624,10 +624,10 @@ Is this correct? Ist dies richtig?
 Klassisch
 
 - outdated_app
-Diese Version von 3hs ist veraltet. Um 3hs weiterhin zu verwenden, musst du die neueste Version installieren.
+Diese Version von 3ls ist veraltet. Um 3ls weiterhin zu verwenden, musst du die neueste Version installieren.
 
 - please_update_manually
-Bitte aktualisiere 3hs manuell und versuche es erneut.
+Bitte aktualisiere 3ls manuell und versuche es erneut.
 
 - press_b_continue
 Drücke UI_GLYPH_B um fortzufahren.
@@ -636,13 +636,13 @@ Drücke UI_GLYPH_B um fortzufahren.
 Die Suchbegriffe müssen mindestens 1 Zeichen enthalten.
 
 - update_check_failed
-Die Suche nach 3hs-Aktualisierungen ist fehlgeschlagen.
+Die Suche nach 3ls-Aktualisierungen ist fehlgeschlagen.
 
 - update_install_failed
-Die Installation der 3hs-Aktualisierung ist fehlgeschlagen.
+Die Installation der 3ls-Aktualisierung ist fehlgeschlagen.
 
 - update_try_again_or_update_manually
-Bitte versuche es erneut oder aktualisiere 3hs manuellerweise.
+Bitte versuche es erneut oder aktualisiere 3ls manuellerweise.
 
 # Shown when other parameters have been entered in legacy search but a unique ID was specified as well
 - no_other_params_uniq
@@ -722,15 +722,15 @@ Aktiviert
 
 # 1.5.9 barrier
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_title
 Wichtig!
 
-# Shown on startup to deter shady console resellers from jacking up prices just because 3hs is preinstalled.
+# Shown on startup to deter shady console resellers from jacking up prices just because 3ls is preinstalled.
 - startup_notice_text
-3hs ist kostenfreie Software. Falls du für 3hs selbst oder mehr für 3hs als Teil eines Bundles gezahlt hast, beantrage sofort eine Rückerstattung!\n
-3hs ist und wird auch immer kostenfrei bleiben, erhältlich unter:
+3ls ist kostenfreie Software. Falls du für 3ls selbst oder mehr für 3ls als Teil eines Bundles gezahlt hast, beantrage sofort eine Rückerstattung!\n
+3ls ist und wird auch immer kostenfrei bleiben, erhältlich unter:
 
-# Shown on startup in the "get a refund if you paid for 3hs" message. Should be generic, may be reused for other stuff later.
+# Shown on startup in the "get a refund if you paid for 3ls" message. Should be generic, may be reused for other stuff later.
 - press_any_button_continue
 Drücke eine beliebige Taste um fortzufahren.
